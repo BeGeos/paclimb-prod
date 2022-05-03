@@ -6,7 +6,7 @@
 
 	// Font Awesome
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+	import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/index.es';
 
 	// Components
 	import Card from './Card.svelte';
