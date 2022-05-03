@@ -10,7 +10,7 @@
 		faBook,
 		faUsers,
 		faCommentDots
-	} from '@fortawesome/free-solid-svg-icons';
+	} from '@fortawesome/free-solid-svg-icons/index.es';
 </script>
 
 <header class="w-full bg-light-blue z-10">

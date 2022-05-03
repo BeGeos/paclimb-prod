@@ -1,7 +1,7 @@
 <script>
 	import FeedbackForm from './FeedbackForm.svelte';
 	import Footer from './Footer.svelte';
-	let illustration = '../../static/images/reviews_illustration.svg';
+	let illustration = './images/reviews_illustration.svg';
 </script>
 
 <main class="my-8">

@@ -1,6 +1,6 @@
 <script>
-	export let previewImage = '../../static/images/mapPreview.png';
 	import Backdrop from '../Backdrop.svelte';
+	let previewImage = './images/mapPreview.png';
 </script>
 
 <Backdrop backdropColor="#CFE4E7" opacity={0.8} />
