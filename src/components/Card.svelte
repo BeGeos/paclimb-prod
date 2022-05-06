@@ -10,23 +10,37 @@
 	let A51;
 	let parking;
 	let parkingLink;
+	let park1_road;
+	let park1_x;
+	let park1_y;
 	let parking2;
 	let parkingLink2;
-	let road;
+	let park2_road;
+	let park2_x;
+	let park2_y;
 	let pgVersante;
 
 	$: if (data) {
 		active = true;
-		wall = data.properties.Falesie;
-		sector = data.properties.Settore != ' ' ? data.properties.Settore : wall;
-		wallLink = data.properties.cerca_Goo2;
-		A51 = data.properties.A51eVol != ' ' ? data.properties.A51eVol : null;
-		pgVersante = data.properties.Pg_Versant != ' ' ? data.properties.Pg_Versant : null;
-		parking = data.properties.Climb_Park;
-		parkingLink = data.properties.Link_Park;
-		parking2 = data.properties.Climb_par2 != ' ' ? data.properties.Climb_par2 : null;
-		parkingLink2 = data.properties.GoogleMap2 ? data.properties.GoogleMap2 : null;
-		road = data.properties.ClimbRoad;
+
+		// Wall and guide details
+		wall = data.properties.falesia;
+		sector = data.properties.Settore != '-' ? data.properties.Settore : wall;
+		wallLink = data.properties.link_wall;
+		A51 = data.properties.A51_wall != '-' ? data.properties.A51_wall : null;
+		pgVersante = data.properties.VSud_wall != '-' ? data.properties.VSud_wall : null;
+
+		// Parking details
+		parking = data.properties.park1;
+		parkingLink = data.properties.park1_lk;
+		park1_road = data.properties.park1_road;
+		park1_x = parseFloat(data.properties.park1_x);
+		park1_y = parseFloat(data.properties.park1_y);
+		parking2 = data.properties.park2 != '-' ? data.properties.park2 : null;
+		parkingLink2 = data.properties.park2_lk ? data.properties.park2_lk : null;
+		park2_road = data.properties.park2_road;
+		park2_x = parseFloat(data.properties.park2_x);
+		park2_y = parseFloat(data.properties.park2_y);
 	} else {
 		active = false;
 	}
@@ -35,7 +49,7 @@
 </script>
 
 <div
-	class="bg-white rounded-lg shadow-xl flex flex-col gap-4 fixed p-6 max-w-[90%] md:min-w-[28rem] scale-0 z-40 top-32 max-h-[38rem] overflow-y-auto"
+	class="bg-white rounded-lg shadow-xl flex flex-col gap-4 absolute md:fixed p-6 max-w-[90%] md:min-w-[28rem] scale-0 z-40 top-28 max-h-[38rem] overflow-y-auto"
 	class:active
 >
 	<div class="flex justify-between items-center">
@@ -66,13 +80,13 @@
 		<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4">
 			<h5>Parking</h5>
 			<div class="flex gap-4 items-center">
-				<Dot {road} />
+				<Dot road={park1_road} x={park1_x} y={park1_y} on:flyToPark />
 				<p class="flex-1 font-light">{parking}</p>
 				<CardLink link={parkingLink} text="to get there" />
 			</div>
 			{#if parking2}
 				<div class="flex gap-4 items-center">
-					<Dot {road} />
+					<Dot road={park2_road} x={park2_x} y={park2_y} on:flyToPark />
 					<p class="flex-1 font-light">{parking2}</p>
 					<CardLink link={parkingLink2} text="to get there" />
 				</div>

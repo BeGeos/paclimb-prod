@@ -33,6 +33,7 @@
 	on:returnHome={handleOpenMap}
 	on:loaded={handleLoaded}
 />
+
 <Hero on:openMap={handleOpenMap} visible={!visible} />
 <Section id="how-to" position={'relative'}>
 	<HowToSection />

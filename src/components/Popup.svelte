@@ -1,11 +1,5 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-
-	let dispatch = createEventDispatcher();
-
-	const closePopup = () => {
-		dispatch('closePopup');
-	};
+	export let handleClose;
 
 	export let roadName;
 	export let featureName;
@@ -18,7 +12,13 @@
 </script>
 
 <div class="absolute bg-white z-40 p-2 rounded-md scale-0 pr-6" style={styles} class:show>
-	<span class="absolute right-2 top-1 cursor-pointer" on:click={closePopup}>&times;</span>
+	<span
+		class="absolute right-2 top-1 cursor-pointer"
+		on:click={(e) => {
+			e.stopPropagation();
+			handleClose();
+		}}>&times;</span
+	>
 	{#if roadName}
 		<h3 class="m-0">{roadName}</h3>
 	{/if}

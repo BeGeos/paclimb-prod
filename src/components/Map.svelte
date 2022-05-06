@@ -9,8 +9,8 @@
 	import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/index.es';
 
 	// Components
+	// import SearchBar from './SearchBar.svelte';
 	import Card from './Card.svelte';
-	import SearchBar from './SearchBar.svelte';
 	import Popup from './Popup.svelte';
 	import Dashboard from './Dashboard.svelte';
 
@@ -55,11 +55,16 @@
 
 	const returnHome = () => {
 		dataWalls = null;
+		closePopup();
 		dispatch('returnHome');
 	};
 
 	const loaded = () => {
 		dispatch('loaded');
+	};
+
+	const closePopup = () => {
+		show = false;
 	};
 
 	const addEventFalesie = (map) => {
@@ -88,6 +93,37 @@
 			x = e.point.x;
 			y = e.point.y;
 			show = true;
+		});
+	};
+
+	const closeCardWhenDrag = (map) => {
+		map.on('mousedown', (e) => {
+			dataWalls = null;
+		});
+
+		map.on('touchstart', (e) => {
+			dataWalls = null;
+		});
+	};
+
+	const addClosePopup = (map) => {
+		map.on('mousedown', (e) => {
+			if (show) {
+				show = false;
+			}
+		});
+
+		map.on('touchstart', (e) => {
+			if (show) {
+				show = false;
+			}
+		});
+	};
+
+	const flyToPark = (x, y) => {
+		dataWalls = null;
+		map.flyTo({
+			center: [x, y]
 		});
 	};
 
@@ -144,6 +180,9 @@
 			zoom: 15,
 			mapboxgl: mapbox
 		});
+
+		closeCardWhenDrag(map);
+		addClosePopup(map);
 
 		// Adding event on click for popups
 		addEventFalesie(map);
@@ -235,7 +274,7 @@
 			>
 		</div>
 		<div class="absolute bottom-10 right-5" class:light={satellite} class:dark={outdoor}>
-			<button class="flex items-center gap-4" on:click={returnHome}>
+			<button class="flex items-center gap-4 md:text-2xl" on:click={returnHome}>
 				<Fa icon={faArrowLeft} />
 				<span class="hidden md:block">Return Home</span>
 			</button>
@@ -253,8 +292,15 @@
 	</div>
 </div>
 
-<Card data={dataWalls} />
-<Popup {roadName} {featureName} {featureLink} {show} {x} {y} on:closePopup={() => (show = false)} />
+<Card
+	data={dataWalls}
+	on:flyToPark={(e) => {
+		let x = e.detail.x;
+		let y = e.detail.y;
+		flyToPark(x, y);
+	}}
+/>
+<Popup {roadName} {featureName} {featureLink} {show} {x} {y} handleClose={closePopup} />
 
 <style>
 	.active {
