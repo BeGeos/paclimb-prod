@@ -32,6 +32,7 @@
 <div
 	class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow flex items-center justify-center cursor-pointer"
 	style={styles}
+	on:click={flyToPark}
 >
-	<p class="text-white m-0" on:click={flyToPark}>P</p>
+	<p class="text-white m-0">P</p>
 </div>
