@@ -49,7 +49,7 @@
 </script>
 
 <div
-	class="bg-white rounded-lg shadow-xl flex flex-col gap-4 absolute md:fixed p-6 max-w-[90%] md:min-w-[28rem] scale-0 z-40 top-28 max-h-[38rem] overflow-y-auto"
+	class="bg-white lg:rounded-lg shadow-xl flex flex-col p-6 gap-4 fixed z-40 bottom-0 left-0 lg:left-[10%] lg:bottom-[25%] max-h-[40%] md:max-h-[38rem] scale-0 overflow-y-auto card-container translate-y-full"
 	class:active
 >
 	<div class="flex justify-between items-center">
@@ -98,14 +98,26 @@
 <style>
 	h2,
 	h3,
-	h4,
 	p {
 		margin: 0;
 		padding: 0;
 	}
-
 	.active {
-		transition: transform 0.3s ease;
 		transform: scale(1);
+		transition: all 0.2s ease;
+		animation: slideIn 0.2s ease forwards;
+	}
+
+	@keyframes slideIn {
+		from {
+			transform: translateY(100%);
+		}
+		to {
+			transform: translateY(0%);
+		}
+	}
+
+	.card-container {
+		width: min(100%, 25rem);
 	}
 </style>

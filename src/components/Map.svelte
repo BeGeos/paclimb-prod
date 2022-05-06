@@ -100,10 +100,6 @@
 		map.on('mousedown', (e) => {
 			dataWalls = null;
 		});
-
-		map.on('touchstart', (e) => {
-			dataWalls = null;
-		});
 	};
 
 	const addClosePopup = (map) => {
@@ -120,8 +116,8 @@
 		});
 	};
 
-	const flyToPark = (x, y) => {
-		dataWalls = null;
+	const flyToPark = (map, x, y) => {
+		map.setBearing(0);
 		map.flyTo({
 			center: [x, y]
 		});
@@ -274,7 +270,7 @@
 			>
 		</div>
 		<div class="absolute bottom-10 right-5" class:light={satellite} class:dark={outdoor}>
-			<button class="flex items-center gap-4 md:text-2xl" on:click={returnHome}>
+			<button class="flex items-center gap-4 text-2xl md:text-base" on:click={returnHome}>
 				<Fa icon={faArrowLeft} />
 				<span class="hidden md:block">Return Home</span>
 			</button>
@@ -297,7 +293,7 @@
 	on:flyToPark={(e) => {
 		let x = e.detail.x;
 		let y = e.detail.y;
-		flyToPark(x, y);
+		flyToPark(map, x, y);
 	}}
 />
 <Popup {roadName} {featureName} {featureLink} {show} {x} {y} handleClose={closePopup} />
