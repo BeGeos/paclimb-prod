@@ -114,7 +114,7 @@
 </script>
 
 <div
-	class="fixed bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[25%] lg:text-base card-container"
+	class="fixed bottom-0 left-0 text-sm font-Voltaire bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[25%] lg:text-base card-container"
 	class:active
 	class:small
 	class:medium
@@ -124,9 +124,34 @@
 	<div class="fixed top-0 left-0 min-w-full h-8 lg:hidden" id="slider" bind:this={slider} />
 	<div class="flex justify-between items-center">
 		<h3 class="uppercase">{sector}</h3>
-		<span class="text-2xl cursor-pointer" on:click={() => (active = !active)}>&times;</span>
+		<span
+			class="text-2xl cursor-pointer"
+			on:click={() => {
+				active = !active;
+				small = true;
+				medium = false;
+				large = false;
+			}}>&times;</span
+		>
 	</div>
 	<h2>{wall}</h2>
+	{#if parking}
+		<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4" id="parking">
+			<h5>Parking</h5>
+			<div class="flex gap-4 items-center">
+				<Dot road={park1_road} x={park1_x} y={park1_y} on:flyToPark />
+				<p class="flex-1 font-light">{parking}</p>
+				<CardLink link={parkingLink} text="to get there" />
+			</div>
+			{#if parking2}
+				<div class="flex gap-4 items-center">
+					<Dot road={park2_road} x={park2_x} y={park2_y} on:flyToPark />
+					<p class="flex-1 font-light">{parking2}</p>
+					<CardLink link={parkingLink2} text="to get there" />
+				</div>
+			{/if}
+		</div>
+	{/if}
 	<div class="p-4 border rounded-lg border-black/40" id="routes">
 		<h5 class="mb-2">Routes & Grades</h5>
 		<CardLink link={wallLink} text="Google it!" />
@@ -146,23 +171,6 @@
 			{/if}
 		</div>
 	</div>
-	{#if parking}
-		<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4" id="parking">
-			<h5>Parking</h5>
-			<div class="flex gap-4 items-center">
-				<Dot road={park1_road} x={park1_x} y={park1_y} on:flyToPark />
-				<p class="flex-1 font-light">{parking}</p>
-				<CardLink link={parkingLink} text="to get there" />
-			</div>
-			{#if parking2}
-				<div class="flex gap-4 items-center">
-					<Dot road={park2_road} x={park2_x} y={park2_y} on:flyToPark />
-					<p class="flex-1 font-light">{parking2}</p>
-					<CardLink link={parkingLink2} text="to get there" />
-				</div>
-			{/if}
-		</div>
-	{/if}
 </div>
 
 <style>
@@ -180,7 +188,7 @@
 	}
 
 	.card-container {
-		width: min(100%, 25rem);
+		width: 100%;
 	}
 
 	/* Responsive Card Styles */
@@ -199,7 +207,7 @@
 	}
 
 	.small {
-		max-height: 20%;
+		max-height: 30%;
 	}
 
 	.small #guides,
@@ -219,7 +227,7 @@
 	.medium #routes {
 		opacity: 1;
 		transform: scale(1);
-		display: block;
+		display: '';
 	}
 
 	.large {
@@ -227,6 +235,10 @@
 	}
 
 	@media (min-width: 1024px) {
+		.card-container {
+			width: min(90%, 25rem);
+		}
+
 		#card::after {
 			display: none;
 		}
@@ -237,11 +249,20 @@
 			max-height: 38rem;
 		}
 
-		#guides,
-		#parking,
-		#routes {
+		.small #guides,
+		.medium #guides,
+		.small #parking,
+		.medium #parking,
+		.small #routes,
+		.medium #routes {
 			display: block;
+			opacity: 1;
 			transform: scale(1);
+		}
+
+		.small #parking,
+		.medium #parking {
+			display: flex;
 		}
 	}
 
@@ -251,15 +272,6 @@
 		}
 		to {
 			transform: translateY(0%);
-		}
-	}
-
-	@keyframes closeIn {
-		from {
-			display: block;
-		}
-		to {
-			display: none;
 		}
 	}
 </style>

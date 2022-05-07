@@ -70,7 +70,10 @@
 	const addEventFalesie = (map) => {
 		map.on('click', 'falesieetichetta5', (e) => {
 			dataWalls = e.features[0];
+			let wallX = parseFloat(dataWalls.properties.falesia_x);
+			let wallY = parseFloat(dataWalls.properties.falesia_y) - 0.003;
 			show = false;
+			flyToWall(map, wallX, wallY);
 		});
 	};
 
@@ -117,6 +120,13 @@
 	};
 
 	const flyToPark = (map, x, y) => {
+		map.setBearing(0);
+		map.flyTo({
+			center: [x, y]
+		});
+	};
+
+	const flyToWall = (map, x, y) => {
 		map.setBearing(0);
 		map.flyTo({
 			center: [x, y]

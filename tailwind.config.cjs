@@ -10,8 +10,12 @@ module.exports = {
 				'navy-blue': '#000080',
 				'danger-red': '#ff3333'
 			},
+			boxShadow: {
+				'3xl': '0 10px 10px 5px rgba(0, 0, 0, 0.3)'
+			},
 			fontFamily: {
-				Poppins: ['Poppins', 'sans-serif']
+				Poppins: ['Poppins', 'sans-serif'],
+				Voltaire: ['Voltaire', 'sans-serif']
 			}
 		}
 	},

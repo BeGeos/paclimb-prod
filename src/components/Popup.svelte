@@ -7,11 +7,12 @@
 	export let show;
 	export let x;
 	export let y;
-
-	$: styles = `top: ${y}px; left: ${x}px`;
 </script>
 
-<div class="absolute bg-white z-40 p-2 rounded-md scale-0 pr-6" style={styles} class:show>
+<div
+	class={`fixed bg-white bottom-0 left-0 min-w-full max-h-fit translate-y-full z-40 p-2 rounded-md scale-0 pr-6 lg:min-w-fit lg:bottom-[${y}] lg:left-[${x}]`}
+	class:show
+>
 	<span
 		class="absolute right-2 top-1 cursor-pointer"
 		on:click={(e) => {
@@ -34,5 +35,15 @@
 	.show {
 		transition: transform 0.3s ease;
 		transform: scale(1);
+		animation: slideIn 0.2s ease-in forwards;
+	}
+
+	@keyframes slideIn {
+		from {
+			transform: translateY(100%);
+		}
+		to {
+			tranform: translateY(0%);
+		}
 	}
 </style>
