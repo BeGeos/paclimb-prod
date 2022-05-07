@@ -1,8 +1,11 @@
 <script>
+	import { onMount } from 'svelte';
+
 	import CardLink from './CardLink.svelte';
 	import Dot from './icons/Dot.svelte';
 
 	export let data;
+
 	let active;
 	let sector;
 	let wall;
@@ -19,6 +22,49 @@
 	let park2_x;
 	let park2_y;
 	let pgVersante;
+
+	let slider;
+	let small = true;
+	let medium = false;
+	let large = false;
+	let touchstartY = 0;
+	let touchendY = 0;
+
+	// Utils functions
+	const handleSwipe = () => {
+		if (touchendY < touchstartY) {
+			if (small) {
+				small = false;
+				medium = true;
+				large = false;
+			} else if (medium) {
+				small = false;
+				medium = false;
+				large = true;
+			} else {
+				return;
+			}
+		}
+
+		if (touchendY > touchstartY) {
+			if (small) {
+				return;
+			} else if (medium) {
+				small = true;
+				medium = false;
+				large = false;
+			} else {
+				small = false;
+				medium = true;
+				large = false;
+			}
+		}
+	};
+
+	const changeSize = () => {
+		small = !small;
+		medium = !medium;
+	};
 
 	$: if (data) {
 		active = true;
@@ -46,22 +92,46 @@
 	}
 
 	$: console.log(data);
+
+	onMount(() => {
+		slider.addEventListener(
+			'touchstart',
+			(e) => {
+				touchstartY = e.changedTouches[0].screenY;
+			},
+			false
+		);
+
+		slider.addEventListener(
+			'touchend',
+			(e) => {
+				touchendY = e.changedTouches[0].screenY;
+				handleSwipe();
+			},
+			false
+		);
+	});
 </script>
 
 <div
-	class="bg-white lg:rounded-lg shadow-xl flex flex-col p-6 gap-4 fixed z-40 bottom-0 left-0 lg:left-[10%] lg:bottom-[25%] max-h-[40%] md:max-h-[38rem] scale-0 overflow-y-auto card-container translate-y-full"
+	class="fixed bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[25%] lg:text-base card-container"
 	class:active
+	class:small
+	class:medium
+	class:large
+	id="card"
 >
+	<div class="fixed top-0 left-0 min-w-full h-8 lg:hidden" id="slider" bind:this={slider} />
 	<div class="flex justify-between items-center">
 		<h3 class="uppercase">{sector}</h3>
 		<span class="text-2xl cursor-pointer" on:click={() => (active = !active)}>&times;</span>
 	</div>
 	<h2>{wall}</h2>
-	<div class="p-4 border rounded-lg border-black/40">
+	<div class="p-4 border rounded-lg border-black/40" id="routes">
 		<h5 class="mb-2">Routes & Grades</h5>
 		<CardLink link={wallLink} text="Google it!" />
 	</div>
-	<div class="p-4 border rounded-lg border-black/40">
+	<div class="p-4 border rounded-lg border-black/40" id="guides">
 		<h5 class="mb-2">Climbing Guides</h5>
 		<div class="flex font-light gap-4">
 			{#if A51}
@@ -77,7 +147,7 @@
 		</div>
 	</div>
 	{#if parking}
-		<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4">
+		<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4" id="parking">
 			<h5>Parking</h5>
 			<div class="flex gap-4 items-center">
 				<Dot road={park1_road} x={park1_x} y={park1_y} on:flyToPark />
@@ -96,6 +166,7 @@
 </div>
 
 <style>
+	/* Global Styles */
 	h2,
 	h3,
 	p {
@@ -108,6 +179,72 @@
 		animation: slideIn 0.2s ease forwards;
 	}
 
+	.card-container {
+		width: min(100%, 25rem);
+	}
+
+	/* Responsive Card Styles */
+	#slider::after {
+		content: '';
+		position: absolute;
+		display: block;
+		height: 0.375rem;
+		width: 3rem;
+		border-radius: 100vw;
+		background-color: rgba(0, 0, 0, 0.3);
+		margin: 0.3rem auto;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.small {
+		max-height: 20%;
+	}
+
+	.small #guides,
+	.small #parking,
+	.small #routes {
+		opacity: 0;
+		transform: scale(0);
+		display: none;
+	}
+
+	.medium {
+		max-height: 50%;
+	}
+
+	.medium #guides,
+	.medium #parking,
+	.medium #routes {
+		opacity: 1;
+		transform: scale(1);
+		display: block;
+	}
+
+	.large {
+		max-height: 80%;
+	}
+
+	@media (min-width: 1024px) {
+		#card::after {
+			display: none;
+		}
+
+		.small,
+		.medium,
+		.large {
+			max-height: 38rem;
+		}
+
+		#guides,
+		#parking,
+		#routes {
+			display: block;
+			transform: scale(1);
+		}
+	}
+
 	@keyframes slideIn {
 		from {
 			transform: translateY(100%);
@@ -117,7 +254,12 @@
 		}
 	}
 
-	.card-container {
-		width: min(100%, 25rem);
+	@keyframes closeIn {
+		from {
+			display: block;
+		}
+		to {
+			display: none;
+		}
 	}
 </style>

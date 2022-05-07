@@ -36,7 +36,7 @@
 	let outdoor = false;
 	let satellite = true;
 	let show = false;
-	let interval;
+	// let interval;
 	let container;
 	let map;
 	let navigationControl;
@@ -59,9 +59,9 @@
 		dispatch('returnHome');
 	};
 
-	const loaded = () => {
-		dispatch('loaded');
-	};
+	// const loaded = () => {
+	// 	dispatch('loaded');
+	// };
 
 	const closePopup = () => {
 		show = false;
@@ -139,12 +139,12 @@
 		return matchingFeatures;
 	};
 
-	const checkLoadedMap = (map) => {
-		if (map.loaded()) {
-			clearInterval(interval);
-			return loaded();
-		}
-	};
+	// const checkLoadedMap = (map) => {
+	// 	if (map.loaded()) {
+	// 		clearInterval(interval);
+	// 		return loaded();
+	// 	}
+	// };
 
 	// Map logic
 	const createMap = () => {
@@ -197,7 +197,7 @@
 		addPopupOnClick(map, 'castel_finalborgo');
 		addPopupOnClick(map, 'park');
 
-		interval = setInterval(checkLoadedMap, 150, map);
+		// interval = setInterval(checkLoadedMap, 150, map);
 	};
 
 	const addControls = () => {

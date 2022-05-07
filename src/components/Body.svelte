@@ -4,15 +4,11 @@
 	import Section from './Section.svelte';
 	import HowToSection from './sections/howToSection.svelte';
 	import PreviewSection from './sections/PreviewSection.svelte';
-	import Loading from './Loading.svelte';
+	// import Loading from './Loading.svelte';
 	import Footer from './Footer.svelte';
 
 	let visible = false;
-	let loading = true;
-
-	const handleLoaded = () => {
-		loading = false;
-	};
+	// let loading = true;
 
 	const handleOpenMap = () => {
 		visible = !visible;
@@ -21,7 +17,7 @@
 	// openFeedbackModal();
 </script>
 
-<Loading {loading} />
+<!-- <Loading {loading} /> -->
 
 <Map
 	lat={44.178981}
@@ -31,7 +27,6 @@
 	bearing={-19.18}
 	{visible}
 	on:returnHome={handleOpenMap}
-	on:loaded={handleLoaded}
 />
 
 <Hero on:openMap={handleOpenMap} visible={!visible} />
