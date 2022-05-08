@@ -71,7 +71,7 @@
 		map.on('click', 'falesieetichetta5', (e) => {
 			dataWalls = e.features[0];
 			let wallX = parseFloat(dataWalls.properties.falesia_x);
-			let wallY = parseFloat(dataWalls.properties.falesia_y) - 0.003;
+			let wallY = parseFloat(dataWalls.properties.falesia_y) - 0.004;
 			show = false;
 			flyToWall(map, wallX, wallY);
 		});

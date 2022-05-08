@@ -1,8 +1,18 @@
 <script>
 	import { onMount } from 'svelte';
 
+	// Font Awesome
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import {
+		faSun,
+		faCar,
+		faBook,
+		faClipboardList
+	} from '@fortawesome/free-solid-svg-icons/index.es';
+
 	import CardLink from './CardLink.svelte';
 	import Dot from './icons/Dot.svelte';
+	import Sunlight from './Sunlight.svelte';
 
 	export let data;
 
@@ -22,48 +32,36 @@
 	let park2_x;
 	let park2_y;
 	let pgVersante;
+	let fall;
+	let summer;
+	let spring;
+	let winter;
 
 	let slider;
-	let small = true;
-	let medium = false;
+	// let small = true;
+	let medium = true;
 	let large = false;
 	let touchstartY = 0;
 	let touchendY = 0;
 
 	// Utils functions
 	const handleSwipe = () => {
+		// Swipe up
 		if (touchendY < touchstartY) {
-			if (small) {
-				small = false;
-				medium = true;
-				large = false;
-			} else if (medium) {
-				small = false;
+			if (medium) {
+				// small = false;
 				medium = false;
 				large = true;
-			} else {
-				return;
-			}
+			} else if (large) return;
 		}
 
+		// Swipe down
 		if (touchendY > touchstartY) {
-			if (small) {
-				return;
-			} else if (medium) {
-				small = true;
-				medium = false;
+			if (large) {
 				large = false;
-			} else {
-				small = false;
 				medium = true;
-				large = false;
-			}
+			} else if (medium) return;
 		}
-	};
-
-	const changeSize = () => {
-		small = !small;
-		medium = !medium;
 	};
 
 	$: if (data) {
@@ -87,6 +85,12 @@
 		park2_road = data.properties.park2_road;
 		park2_x = parseFloat(data.properties.park2_x);
 		park2_y = parseFloat(data.properties.park2_y);
+
+		// Exposure details
+		fall = data.properties.fall;
+		spring = data.properties.spring;
+		summer = data.properties.summr;
+		winter = data.properties.winter;
 	} else {
 		active = false;
 	}
@@ -114,30 +118,32 @@
 </script>
 
 <div
-	class="fixed bottom-0 left-0 text-sm font-Voltaire bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[25%] lg:text-base card-container"
+	class="fixed bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[20%] lg:text-base card-container"
 	class:active
-	class:small
 	class:medium
 	class:large
 	id="card"
+	bind:this={slider}
 >
-	<div class="fixed top-0 left-0 min-w-full h-8 lg:hidden" id="slider" bind:this={slider} />
+	<div class="fixed top-0 left-0 min-w-full h-8 lg:hidden" id="slider" />
 	<div class="flex justify-between items-center">
-		<h3 class="uppercase">{sector}</h3>
+		<h3 class="uppercase font-Voltaire">{sector}</h3>
 		<span
 			class="text-2xl cursor-pointer"
 			on:click={() => {
 				active = !active;
-				small = true;
-				medium = false;
+				medium = true;
 				large = false;
 			}}>&times;</span
 		>
 	</div>
-	<h2>{wall}</h2>
+	<h2 class="font-Voltaire">{wall}</h2>
 	{#if parking}
 		<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4" id="parking">
-			<h5>Parking</h5>
+			<div class="flex gap-2 items-center">
+				<Fa icon={faCar} />
+				<h5>Parking</h5>
+			</div>
 			<div class="flex gap-4 items-center">
 				<Dot road={park1_road} x={park1_x} y={park1_y} on:flyToPark />
 				<p class="flex-1 font-light">{parking}</p>
@@ -152,12 +158,11 @@
 			{/if}
 		</div>
 	{/if}
-	<div class="p-4 border rounded-lg border-black/40" id="routes">
-		<h5 class="mb-2">Routes & Grades</h5>
-		<CardLink link={wallLink} text="Google it!" />
-	</div>
 	<div class="p-4 border rounded-lg border-black/40" id="guides">
-		<h5 class="mb-2">Climbing Guides</h5>
+		<div class="flex gap-2 items-center">
+			<Fa icon={faBook} />
+			<h5>Climbing Guides</h5>
+		</div>
 		<div class="flex font-light gap-4">
 			{#if A51}
 				<p class="flex-1">Finale 51©</p>
@@ -169,6 +174,25 @@
 				<p class="flex-1">Versante Sud©</p>
 				<p>pag. {pgVersante}</p>
 			{/if}
+		</div>
+	</div>
+	<div class="p-4 border rounded-lg border-black/40 flex gap-4 items-center" id="routes">
+		<div class="flex gap-2 items-center">
+			<Fa icon={faClipboardList} />
+			<h5 class="flex-1">Routes and Grades</h5>
+		</div>
+		<CardLink link={wallLink} text="Google it!" />
+	</div>
+	<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4" id="sunlight">
+		<div class="flex gap-2 items-center">
+			<Fa icon={faSun} />
+			<h5>Sunlight on the wall</h5>
+		</div>
+		<div class="flex flex-col gap-4" id="suntime-interval">
+			<Sunlight period={summer} title={'Summer'} />
+			<Sunlight period={fall} title={'Autumn'} />
+			<Sunlight period={winter} title={'Winter'} />
+			<Sunlight period={spring} title={'Spring'} />
 		</div>
 	</div>
 </div>
@@ -206,7 +230,7 @@
 		transform: translateX(-50%);
 	}
 
-	.small {
+	/* .small {
 		max-height: 30%;
 	}
 
@@ -216,10 +240,10 @@
 		opacity: 0;
 		transform: scale(0);
 		display: none;
-	}
+	} */
 
 	.medium {
-		max-height: 50%;
+		max-height: fit-content;
 	}
 
 	.medium #guides,
@@ -227,11 +251,14 @@
 	.medium #routes {
 		opacity: 1;
 		transform: scale(1);
-		display: '';
 	}
 
-	.large {
-		max-height: 80%;
+	.medium #suntime-interval {
+		display: none;
+	}
+
+	.large #suntime-interval {
+		display: flex;
 	}
 
 	@media (min-width: 1024px) {
@@ -243,25 +270,26 @@
 			display: none;
 		}
 
-		.small,
+		/* .small, */
 		.medium,
 		.large {
 			max-height: 38rem;
 		}
 
-		.small #guides,
+		/* .small #guides, */
 		.medium #guides,
-		.small #parking,
+		/* .small #parking, */
 		.medium #parking,
-		.small #routes,
+		/* .small #routes, */
 		.medium #routes {
 			display: block;
 			opacity: 1;
 			transform: scale(1);
 		}
 
-		.small #parking,
-		.medium #parking {
+		/* .small #parking, */
+		.medium #parking,
+		.medium #suntime-interval {
 			display: flex;
 		}
 	}

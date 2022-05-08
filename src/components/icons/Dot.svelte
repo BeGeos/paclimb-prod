@@ -10,7 +10,7 @@
 	const flyToPark = () => {
 		dispatch('flyToPark', {
 			x,
-			y: y - 0.003
+			y: y - 0.004
 		});
 	};
 

@@ -8,7 +8,10 @@ module.exports = {
 				'dk-slate': '#2F2E2E',
 				'sky-blue': '#4c8bf5',
 				'navy-blue': '#000080',
-				'danger-red': '#ff3333'
+				'danger-red': '#ff3333',
+				'deep-brown': '#4D4223',
+				'grey-brown': '#C0BA81',
+				'sun-yellow': '#EBEE67'
 			},
 			boxShadow: {
 				'3xl': '0 10px 10px 5px rgba(0, 0, 0, 0.3)'
