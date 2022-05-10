@@ -38,8 +38,8 @@
 	let winter;
 
 	let slider;
-	// let small = true;
-	let medium = true;
+	let small = true;
+	let medium = false;
 	let large = false;
 	let touchstartY = 0;
 	let touchendY = 0;
@@ -48,11 +48,15 @@
 	const handleSwipe = () => {
 		// Swipe up
 		if (touchendY < touchstartY) {
-			if (medium) {
-				// small = false;
+			if (small) {
+				small = false;
+				medium = true;
+				large = false;
+			} else if (medium) {
+				small = false;
 				medium = false;
 				large = true;
-			} else if (large) return;
+			} else return;
 		}
 
 		// Swipe down
@@ -60,7 +64,11 @@
 			if (large) {
 				large = false;
 				medium = true;
-			} else if (medium) return;
+				small = false;
+			} else if (medium) {
+				medium = false;
+				small = true;
+			} else return;
 		}
 	};
 
@@ -120,6 +128,7 @@
 <div
 	class="fixed bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[20%] lg:text-base card-container"
 	class:active
+	class:small
 	class:medium
 	class:large
 	id="card"
@@ -132,7 +141,8 @@
 			class="text-2xl cursor-pointer"
 			on:click={() => {
 				active = !active;
-				medium = true;
+				small = true;
+				medium = false;
 				large = false;
 			}}>&times;</span
 		>
@@ -158,6 +168,7 @@
 			{/if}
 		</div>
 	{/if}
+
 	<div class="p-4 border rounded-lg border-black/40" id="guides">
 		<div class="flex gap-2 items-center">
 			<Fa icon={faBook} />
@@ -176,13 +187,15 @@
 			{/if}
 		</div>
 	</div>
+
 	<div class="p-4 border rounded-lg border-black/40 flex gap-4 items-center" id="routes">
-		<div class="flex gap-2 items-center">
+		<div class="flex gap-2 items-center flex-1">
 			<Fa icon={faClipboardList} />
-			<h5 class="flex-1">Routes and Grades</h5>
+			<h5>Routes and Grades</h5>
 		</div>
 		<CardLink link={wallLink} text="Google it!" />
 	</div>
+
 	<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4" id="sunlight">
 		<div class="flex gap-2 items-center">
 			<Fa icon={faSun} />
@@ -208,7 +221,7 @@
 	.active {
 		transform: scale(1);
 		transition: all 0.2s ease;
-		animation: slideIn 0.2s ease forwards;
+		animation: slideIn 0.25s ease forwards;
 	}
 
 	.card-container {
@@ -230,20 +243,21 @@
 		transform: translateX(-50%);
 	}
 
-	/* .small {
-		max-height: 30%;
+	.small {
+		max-height: fit-content;
+	}
+
+	.medium,
+	.large {
+		max-height: 100%;
 	}
 
 	.small #guides,
-	.small #parking,
-	.small #routes {
+	.small #routes,
+	.small #sunlight {
 		opacity: 0;
 		transform: scale(0);
 		display: none;
-	} */
-
-	.medium {
-		max-height: fit-content;
 	}
 
 	.medium #guides,
@@ -253,6 +267,9 @@
 		transform: scale(1);
 	}
 
+	.medium #sunlight {
+		display: flex;
+	}
 	.medium #suntime-interval {
 		display: none;
 	}
@@ -270,24 +287,27 @@
 			display: none;
 		}
 
-		/* .small, */
+		.small,
 		.medium,
 		.large {
 			max-height: 38rem;
 		}
 
-		/* .small #guides, */
+		.small #guides,
 		.medium #guides,
-		/* .small #parking, */
+		.small #parking,
+		.small #sunlight,
 		.medium #parking,
-		/* .small #routes, */
+		.small #routes,
 		.medium #routes {
 			display: block;
 			opacity: 1;
 			transform: scale(1);
 		}
 
-		/* .small #parking, */
+		.small #parking,
+		.small #sunlight,
+		.small #suntime-interval,
 		.medium #parking,
 		.medium #suntime-interval {
 			display: flex;
@@ -300,6 +320,24 @@
 		}
 		to {
 			transform: translateY(0%);
+		}
+	}
+
+	@keyframes sizeMiddleUp {
+		from {
+			max-height: 30%;
+		}
+		to {
+			max-height: fit-content;
+		}
+	}
+
+	@keyframes sizeLargeUp {
+		from {
+			max-height: fit-content;
+		}
+		to {
+			max-height: 100%;
 		}
 	}
 </style>
