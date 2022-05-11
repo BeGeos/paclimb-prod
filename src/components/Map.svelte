@@ -14,6 +14,9 @@
 	import Popup from './Popup.svelte';
 	import Dashboard from './Dashboard.svelte';
 
+	// Stores
+	import { falesie } from '../stores';
+
 	// JS utils and functions
 	import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 	import { mapbox, MapboxGeocoder, addCursorToLayers, addFlytTo } from '../utils/mapbox.js';
@@ -136,25 +139,17 @@
 	// TODO
 	const forwardGeocoder = (query) => {
 		const matchingFeatures = [];
-		for (const feature of customData.features) {
+		for (const feature of $falesie) {
 			// Handle queries with different capitalization
 			// than the source data by calling toLowerCase().
-			if (feature.properties.title.toLowerCase().includes(query.toLowerCase())) {
-				feature['place_name'] = `🏔 ${feature.properties.title}`;
-				feature['center'] = feature.geometry.coordinates;
-				feature['place_type'] = ['crag'];
+			if (feature.properties.falesia.toLowerCase().includes(query.toLowerCase())) {
+				feature['place_name'] = `🏔 ${feature.properties.falesia}`;
+				feature['center'] = [feature.properties.falesia_x, feature.properties.falesia_y];
 				matchingFeatures.push(feature);
 			}
 		}
 		return matchingFeatures;
 	};
-
-	// const checkLoadedMap = (map) => {
-	// 	if (map.loaded()) {
-	// 		clearInterval(interval);
-	// 		return loaded();
-	// 	}
-	// };
 
 	// Map logic
 	const createMap = () => {
@@ -180,9 +175,12 @@
 			// Draw an arrow next to the location dot to indicate which direction the device is heading.
 			showUserHeading: true
 		});
+
 		geocoder = new MapboxGeocoder({
 			accessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
 			placeholder: 'Search...',
+			localGeocoder: forwardGeocoder,
+			bbox: [8.2836296, 44.1547898, 8.4371453, 44.2277226],
 			zoom: 15,
 			mapboxgl: mapbox
 		});
@@ -206,8 +204,6 @@
 		// Add popups to layers
 		addPopupOnClick(map, 'castel_finalborgo');
 		addPopupOnClick(map, 'park');
-
-		// interval = setInterval(checkLoadedMap, 150, map);
 	};
 
 	const addControls = () => {
