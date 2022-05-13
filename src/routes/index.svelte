@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Test Finale Map App</title>
+	<title>PaClimb Mappa 3D - Homepage</title>
 </svelte:head>
 
 <div class="container mx-auto xl:max-w-6xl max-w-[90%]">

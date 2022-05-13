@@ -1,0 +1,486 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"id": 1,
+			"geometry": { "type": "Point", "coordinates": [8.3188221499840207, 44.172798820044328] },
+			"properties": {
+				"OBJECTID": 1,
+				"Settore": "ROCCE DELL'ORERA",
+				"cod_area": 1,
+				"ORIG_FID": 1,
+				"x": "008.31882215",
+				"y": "44.17279882"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 2,
+			"geometry": { "type": "Point", "coordinates": [8.3253767757813364, 44.163760903775163] },
+			"properties": {
+				"OBJECTID": 2,
+				"Settore": "CAPRAZOPPA",
+				"cod_area": 1,
+				"ORIG_FID": 2,
+				"x": "008.32537678",
+				"y": "44.16376090"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 3,
+			"geometry": { "type": "Point", "coordinates": [8.3544659004764732, 44.192849744652563] },
+			"properties": {
+				"OBJECTID": 3,
+				"Settore": "BRIC RESEGHE",
+				"cod_area": 1,
+				"ORIG_FID": 3,
+				"x": "008.35446590",
+				"y": "44.19284974"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 4,
+			"geometry": { "type": "Point", "coordinates": [8.3187399300720628, 44.163275132303113] },
+			"properties": {
+				"OBJECTID": 4,
+				"Settore": "FALESIA DELLE CENTOCORDE",
+				"cod_area": 2,
+				"ORIG_FID": 4,
+				"x": "008.31873993",
+				"y": "44.16327513"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 5,
+			"geometry": { "type": "Point", "coordinates": [8.3427504295901382, 44.209978741864944] },
+			"properties": {
+				"OBJECTID": 5,
+				"Settore": "RIAN CORNEI",
+				"cod_area": 0,
+				"ORIG_FID": 5,
+				"x": "008.34275043",
+				"y": "44.20997874"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 6,
+			"geometry": { "type": "Point", "coordinates": [8.3210853186723117, 44.194182440045168] },
+			"properties": {
+				"OBJECTID": 6,
+				"Settore": "PLACCA DELLE CASE VALLE",
+				"cod_area": 2,
+				"ORIG_FID": 6,
+				"x": "008.32108532",
+				"y": "44.19418244"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 7,
+			"geometry": { "type": "Point", "coordinates": [8.3168479862731139, 44.197793354337584] },
+			"properties": {
+				"OBJECTID": 7,
+				"Settore": "MONTE SORDO",
+				"cod_area": 0,
+				"ORIG_FID": 7,
+				"x": "008.31684799",
+				"y": "44.19779335"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 8,
+			"geometry": { "type": "Point", "coordinates": [8.3229337651183428, 44.19343176910882] },
+			"properties": {
+				"OBJECTID": 8,
+				"Settore": "S. ANTONIO",
+				"cod_area": 0,
+				"ORIG_FID": 8,
+				"x": "008.32293377",
+				"y": "44.19343177"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 9,
+			"geometry": { "type": "Point", "coordinates": [8.3237782907626414, 44.177183313076647] },
+			"properties": {
+				"OBJECTID": 9,
+				"Settore": "PARETINA DI FINALBORGO",
+				"cod_area": 2,
+				"ORIG_FID": 9,
+				"x": "008.32377829",
+				"y": "44.17718331"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 10,
+			"geometry": { "type": "Point", "coordinates": [8.3108300522164278, 44.193575227081737] },
+			"properties": {
+				"OBJECTID": 10,
+				"Settore": "ROCCA DI PERTI",
+				"cod_area": 0,
+				"ORIG_FID": 10,
+				"x": "008.31083005",
+				"y": "44.19357523"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 11,
+			"geometry": { "type": "Point", "coordinates": [8.3182686988172385, 44.206831204522267] },
+			"properties": {
+				"OBJECTID": 11,
+				"Settore": "BRIC DEL FRATE",
+				"cod_area": 0,
+				"ORIG_FID": 11,
+				"x": "008.31826870",
+				"y": "44.20683120"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 12,
+			"geometry": { "type": "Point", "coordinates": [8.329626675972662, 44.204255220454378] },
+			"properties": {
+				"OBJECTID": 12,
+				"Settore": "BRIC SPAVENTAGGI",
+				"cod_area": 0,
+				"ORIG_FID": 12,
+				"x": "008.32962668",
+				"y": "44.20425522"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 13,
+			"geometry": { "type": "Point", "coordinates": [8.3730083930403474, 44.200893466364818] },
+			"properties": {
+				"OBJECTID": 13,
+				"Settore": "LE MANIE",
+				"cod_area": 0,
+				"ORIG_FID": 13,
+				"x": "008.37300839",
+				"y": "44.20089347"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 14,
+			"geometry": { "type": "Point", "coordinates": [8.3509678935219398, 44.212866940445785] },
+			"properties": {
+				"OBJECTID": 14,
+				"Settore": "BORAGNI",
+				"cod_area": 0,
+				"ORIG_FID": 14,
+				"x": "008.35096789",
+				"y": "44.21286694"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 15,
+			"geometry": { "type": "Point", "coordinates": [8.3624234919525442, 44.196365059083142] },
+			"properties": {
+				"OBJECTID": 15,
+				"Settore": "ROCCA DI CORNO",
+				"cod_area": 0,
+				"ORIG_FID": 15,
+				"x": "008.36242349",
+				"y": "44.19636506"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 16,
+			"geometry": { "type": "Point", "coordinates": [8.3196621562150472, 44.196113099246169] },
+			"properties": {
+				"OBJECTID": 16,
+				"Settore": "PARETE DIMENTICATA",
+				"cod_area": 2,
+				"ORIG_FID": 16,
+				"x": "008.31966216",
+				"y": "44.19611310"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 17,
+			"geometry": { "type": "Point", "coordinates": [8.3167246814139091, 44.186383923650808] },
+			"properties": {
+				"OBJECTID": 17,
+				"Settore": "FALESIA DELLA LUCERTOLA E DEL GABBIANO",
+				"cod_area": 2,
+				"ORIG_FID": 17,
+				"x": "008.31672468",
+				"y": "44.18638392"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 18,
+			"geometry": { "type": "Point", "coordinates": [8.3171077440671102, 44.191867091489684] },
+			"properties": {
+				"OBJECTID": 18,
+				"Settore": "BILLY BUD E SUONATORE JONES",
+				"cod_area": 2,
+				"ORIG_FID": 18,
+				"x": "008.31710774",
+				"y": "44.19186709"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 19,
+			"geometry": { "type": "Point", "coordinates": [8.4207845455129728, 44.193046537752409] },
+			"properties": {
+				"OBJECTID": 19,
+				"Settore": "CAPO NOLI",
+				"cod_area": 0,
+				"ORIG_FID": 19,
+				"x": "008.42078455",
+				"y": "44.19304654"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 20,
+			"geometry": { "type": "Point", "coordinates": [8.3744707994849819, 44.207291320298054] },
+			"properties": {
+				"OBJECTID": 20,
+				"Settore": "FALESIA DELLA GAZZELLA",
+				"cod_area": 2,
+				"ORIG_FID": 20,
+				"x": "008.37447080",
+				"y": "44.20729132"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 21,
+			"geometry": { "type": "Point", "coordinates": [8.3097016803155732, 44.201277263779204] },
+			"properties": {
+				"OBJECTID": 21,
+				"Settore": "FALESIA DEL RICCIO",
+				"cod_area": 2,
+				"ORIG_FID": 21,
+				"x": "008.30970168",
+				"y": "44.20127726"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 22,
+			"geometry": { "type": "Point", "coordinates": [8.3210161756357994, 44.196357735354518] },
+			"properties": {
+				"OBJECTID": 22,
+				"Settore": "BRIC SCIMARCO",
+				"cod_area": 1,
+				"ORIG_FID": 22,
+				"x": "008.32101618",
+				"y": "44.19635774"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 23,
+			"geometry": { "type": "Point", "coordinates": [8.3163943969421297, 44.204195028029297] },
+			"properties": {
+				"OBJECTID": 23,
+				"Settore": "PIANO MARINO",
+				"cod_area": 1,
+				"ORIG_FID": 23,
+				"x": "008.31639440",
+				"y": "44.20419503"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 24,
+			"geometry": { "type": "Point", "coordinates": [8.3332007736946228, 44.214094107278804] },
+			"properties": {
+				"OBJECTID": 24,
+				"Settore": "MONTE CUCCO",
+				"cod_area": 0,
+				"ORIG_FID": 24,
+				"x": "008.33320077",
+				"y": "44.21409411"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 25,
+			"geometry": { "type": "Point", "coordinates": [8.3244572096548559, 44.202772032806749] },
+			"properties": {
+				"OBJECTID": 25,
+				"Settore": "KATTEDRALE",
+				"cod_area": 2,
+				"ORIG_FID": 25,
+				"x": "008.32445721",
+				"y": "44.20277203"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 26,
+			"geometry": { "type": "Point", "coordinates": [8.322729776325664, 44.201271136633466] },
+			"properties": {
+				"OBJECTID": 26,
+				"Settore": "TIBET",
+				"cod_area": 2,
+				"ORIG_FID": 26,
+				"x": "008.32272978",
+				"y": "44.20127114"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 27,
+			"geometry": { "type": "Point", "coordinates": [8.3236417004430727, 44.202794645341079] },
+			"properties": {
+				"OBJECTID": 27,
+				"Settore": "KONVENTO",
+				"cod_area": 2,
+				"ORIG_FID": 27,
+				"x": "008.32364170",
+				"y": "44.20279465"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 28,
+			"geometry": { "type": "Point", "coordinates": [8.3224347746047975, 44.199334588922511] },
+			"properties": {
+				"OBJECTID": 28,
+				"Settore": "BRIC GRIGIO",
+				"cod_area": 0,
+				"ORIG_FID": 28,
+				"x": "008.32243477",
+				"y": "44.19933459"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 29,
+			"geometry": { "type": "Point", "coordinates": [8.3289582878232231, 44.199412872580652] },
+			"properties": {
+				"OBJECTID": 29,
+				"Settore": "BRIC PIANARELLA",
+				"cod_area": 0,
+				"ORIG_FID": 29,
+				"x": "008.32895829",
+				"y": "44.19941287"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 30,
+			"geometry": { "type": "Point", "coordinates": [8.3225254879662245, 44.198378218924113] },
+			"properties": {
+				"OBJECTID": 30,
+				"Settore": "TRE FRATI",
+				"cod_area": 2,
+				"ORIG_FID": 30,
+				"x": "008.32252549",
+				"y": "44.19837822"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 31,
+			"geometry": { "type": "Point", "coordinates": [8.3246551271029769, 44.204150988667514] },
+			"properties": {
+				"OBJECTID": 31,
+				"Settore": "SAKRESTIA",
+				"cod_area": 2,
+				"ORIG_FID": 31,
+				"x": "008.32465513",
+				"y": "44.20415099"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 32,
+			"geometry": { "type": "Point", "coordinates": [8.3503774840237348, 44.191229120044497] },
+			"properties": {
+				"OBJECTID": 32,
+				"Settore": "LACRAMA'",
+				"cod_area": 1,
+				"ORIG_FID": 32,
+				"x": "008.35037748",
+				"y": "44.19122912"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 33,
+			"geometry": { "type": "Point", "coordinates": [8.350329297541812, 44.209261749763272] },
+			"properties": {
+				"OBJECTID": 33,
+				"Settore": "VAL DI NAVA",
+				"cod_area": 0,
+				"ORIG_FID": 33,
+				"x": "008.35032930",
+				"y": "44.20926175"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 34,
+			"geometry": { "type": "Point", "coordinates": [8.3481462787237231, 44.198372971965405] },
+			"properties": {
+				"OBJECTID": 34,
+				"Settore": "FALESIA DELLO SCOIATTOLO",
+				"cod_area": 2,
+				"ORIG_FID": 34,
+				"x": "008.34814628",
+				"y": "44.19837297"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 35,
+			"geometry": { "type": "Point", "coordinates": [8.3591077847072519, 44.211662930113057] },
+			"properties": {
+				"OBJECTID": 35,
+				"Settore": "ROCCA DEGLI UCCELLI",
+				"cod_area": 0,
+				"ORIG_FID": 35,
+				"x": "008.35910778",
+				"y": "44.21166293"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 36,
+			"geometry": { "type": "Point", "coordinates": [8.3526609857937864, 44.197952886430421] },
+			"properties": {
+				"OBJECTID": 36,
+				"Settore": "CASA DEL VECCHE'",
+				"cod_area": 1,
+				"ORIG_FID": 36,
+				"x": "008.35266099",
+				"y": "44.19795289"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 37,
+			"geometry": { "type": "Point", "coordinates": [8.3455715736049516, 44.188103972834682] },
+			"properties": {
+				"OBJECTID": 37,
+				"Settore": "MONTE TOLLA/LA FORNACE",
+				"cod_area": 2,
+				"ORIG_FID": 37,
+				"x": "008.34557157",
+				"y": "44.18810397"
+			}
+		}
+	]
+}

@@ -1,4 +1,10 @@
 <script>
+	import { roadColors } from '../stores';
+
+	// Font Awesome
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import { faRoute } from '@fortawesome/free-solid-svg-icons/index.es';
+
 	export let handleClose;
 
 	export let roadName;
@@ -14,19 +20,25 @@
 	class:show
 >
 	<span
-		class="absolute right-2 top-1 cursor-pointer text-2xl"
+		class="absolute right-2 top-1 cursor-pointer text-4xl"
 		on:click={(e) => {
 			e.stopPropagation();
 			handleClose();
 		}}>&times;</span
 	>
 	{#if roadName}
-		<h3 class="m-0">{roadName}</h3>
+		<h3 class="m-0" style:color={$roadColors[roadName.toLowerCase()]}>{roadName}</h3>
 	{/if}
 	<div class="flex items-center justify-between gap-4 p-2 border border-black/40 rounded-lg">
 		<p class="m-0 text-xl">{featureName}</p>
-		<a href={featureLink} class="p-2 shadow-lg rounded-md" target="_blank" rel="noopener noreferrer"
-			>To get there</a
+		<a
+			href={featureLink}
+			class="p-2 shadow-lg rounded-md border border-black/40 flex gap-2 items-center"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<Fa icon={faRoute} />
+			To get there</a
 		>
 	</div>
 </div>

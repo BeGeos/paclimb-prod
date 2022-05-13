@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { roadColors } from '../../stores';
 
 	const dispatch = createEventDispatcher();
 
@@ -14,17 +15,7 @@
 		});
 	};
 
-	let mapper = {
-		'verezzi road': '#eaf344',
-		'perti road': '#38a800',
-		'monte sordo road': '#57ceef',
-		'boragni road': '#006eff',
-		'le manie road': '#ffaa00',
-		'capo noli road': '#a800e6',
-		'bric road': '#00e6a8'
-	};
-
-	$: dotColor = mapper[road.toLowerCase()];
+	$: dotColor = $roadColors[road.toLowerCase()];
 
 	$: styles = `background-color: ${dotColor}`;
 </script>

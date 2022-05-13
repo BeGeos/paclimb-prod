@@ -1,0 +1,437 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"id": 1,
+			"geometry": { "type": "Point", "coordinates": [8.3097017394491441, 44.197461489013591] },
+			"properties": {
+				"OBJECTID": 1,
+				"climbpark": 3,
+				"nome_cpark": "Perti Nord",
+				"GoogleLink": "https://goo.gl/maps/fXEmuYMfvobQN9yw6",
+				"ClimbRoad": "Monte Sordo Road",
+				"park_num": "5",
+				"nom_cpark2": "Perti Nord Park",
+				"x": "008.30970174",
+				"y": "44.19746149"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 2,
+			"geometry": { "type": "Point", "coordinates": [8.3160664373456807, 44.195743092458002] },
+			"properties": {
+				"OBJECTID": 2,
+				"climbpark": 3,
+				"nome_cpark": "Monte Sordo",
+				"GoogleLink": "https://goo.gl/maps/t7GQ43iSvVutmT9Q8",
+				"ClimbRoad": "Monte Sordo Road",
+				"park_num": "4",
+				"nom_cpark2": "Monte Sordo Park",
+				"x": "008.31606644",
+				"y": "44.19574309"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 3,
+			"geometry": { "type": "Point", "coordinates": [8.3371679502332352, 44.215823693293729] },
+			"properties": {
+				"OBJECTID": 3,
+				"climbpark": 4,
+				"nome_cpark": "Vecchia Cava di Orco",
+				"GoogleLink": "https://goo.gl/maps/2WiiQrcPqL5mjiDJ6",
+				"ClimbRoad": "Bric Road",
+				"park_num": "5",
+				"nom_cpark2": "Vecchia Cava di Orco Park",
+				"x": "008.33716795",
+				"y": "44.21582369"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 4,
+			"geometry": { "type": "Point", "coordinates": [8.3260127890335767, 44.175498514254677] },
+			"properties": {
+				"OBJECTID": 4,
+				"climbpark": 2,
+				"nome_cpark": "Finalborgo",
+				"GoogleLink": "https://goo.gl/maps/KjPx2XpBAMSJc5VL6",
+				"ClimbRoad": "Perti Road",
+				"park_num": "1",
+				"nom_cpark2": "Finalborgo Park",
+				"x": "008.32601279",
+				"y": "44.17549851"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 5,
+			"geometry": { "type": "Point", "coordinates": [8.3449799784867906, 44.222263725454397] },
+			"properties": {
+				"OBJECTID": 5,
+				"climbpark": 4,
+				"nome_cpark": "Cimitero di Orco",
+				"GoogleLink": "https://goo.gl/maps/Z6AgXGtCwkFn9EuR8",
+				"ClimbRoad": "Bric Road",
+				"park_num": "6",
+				"nom_cpark2": "Cimitero di Orco Park",
+				"x": "008.34497998",
+				"y": "44.22226373"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 6,
+			"geometry": { "type": "Point", "coordinates": [8.3273720390624657, 44.20052233756445] },
+			"properties": {
+				"OBJECTID": 6,
+				"climbpark": 4,
+				"nome_cpark": "Pianarella",
+				"GoogleLink": "https://goo.gl/maps/b15jKDwQ6d5Cqzmq5",
+				"ClimbRoad": "Bric Road",
+				"park_num": "1",
+				"nom_cpark2": "Pianarella Park",
+				"x": "008.32737204",
+				"y": "44.20052234"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 7,
+			"geometry": { "type": "Point", "coordinates": [8.3139833145358679, 44.166309736936832] },
+			"properties": {
+				"OBJECTID": 7,
+				"climbpark": 1,
+				"nome_cpark": "Cava Vecchia",
+				"GoogleLink": "https://goo.gl/maps/24w2SS7Pv53gGrSp8",
+				"ClimbRoad": "Verezzi Road",
+				"park_num": "2",
+				"nom_cpark2": "Cava Vecchia Park",
+				"x": "008.31398331",
+				"y": "44.16630974"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 8,
+			"geometry": { "type": "Point", "coordinates": [8.351743768101846, 44.215125733162218] },
+			"properties": {
+				"OBJECTID": 8,
+				"climbpark": 5,
+				"nome_cpark": "Boragni",
+				"GoogleLink": "https://goo.gl/maps/qDSnqvfH3oaeasvc6",
+				"ClimbRoad": "Boragni Road",
+				"park_num": "6",
+				"nom_cpark2": "Boragni Park",
+				"x": "008.35174377",
+				"y": "44.21512573"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 9,
+			"geometry": { "type": "Point", "coordinates": [8.3204117919948413, 44.161099245516056] },
+			"properties": {
+				"OBJECTID": 9,
+				"climbpark": 1,
+				"nome_cpark": "Via della Cornice",
+				"GoogleLink": "https://goo.gl/maps/y3QY6eV6GYGQJcVSA",
+				"ClimbRoad": "Verezzi Road",
+				"park_num": "1",
+				"nom_cpark2": "Via della Cornice Park",
+				"x": "008.32041179",
+				"y": "44.16109925"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 10,
+			"geometry": { "type": "Point", "coordinates": [8.310716850492339, 44.169812237595728] },
+			"properties": {
+				"OBJECTID": 10,
+				"climbpark": 1,
+				"nome_cpark": "Verezzi",
+				"GoogleLink": "https://goo.gl/maps/kyUiKLZTXyVh2RhYA",
+				"ClimbRoad": "Verezzi Road",
+				"park_num": "3",
+				"nom_cpark2": "Verezzi Park",
+				"x": "008.31071685",
+				"y": "44.16981224"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 11,
+			"geometry": { "type": "Point", "coordinates": [8.3195284589834362, 44.182727968292539] },
+			"properties": {
+				"OBJECTID": 11,
+				"climbpark": 3,
+				"nome_cpark": "Chiesa Perti Alto",
+				"GoogleLink": "https://goo.gl/maps/6uqdrv7FFuSw7jcf8",
+				"ClimbRoad": "Monte Sordo Road",
+				"park_num": "1",
+				"nom_cpark2": "Chiesa Perti Alto Park",
+				"x": "008.31952846",
+				"y": "44.18272797"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 12,
+			"geometry": { "type": "Point", "coordinates": [8.3203638633985317, 44.189586133863109] },
+			"properties": {
+				"OBJECTID": 12,
+				"climbpark": 3,
+				"nome_cpark": "Chiesetta",
+				"GoogleLink": "https://goo.gl/maps/7JYnxbovXr2XPMnp6",
+				"ClimbRoad": "Monte Sordo Road",
+				"park_num": "2",
+				"nom_cpark2": "Chiesetta Park",
+				"x": "008.32036386",
+				"y": "44.18958613"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 13,
+			"geometry": { "type": "Point", "coordinates": [8.3196012480620496, 44.191860651575297] },
+			"properties": {
+				"OBJECTID": 13,
+				"climbpark": 3,
+				"nome_cpark": "Casa Valle Strada",
+				"GoogleLink": "https://goo.gl/maps/TFfDn4SKQcVPvaU97",
+				"ClimbRoad": "Monte Sordo Road",
+				"park_num": "3",
+				"nom_cpark2": "Casa Valle Strada Park",
+				"x": "008.31960125",
+				"y": "44.19186065"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 14,
+			"geometry": { "type": "Point", "coordinates": [8.326972142086257, 44.205599077454025] },
+			"properties": {
+				"OBJECTID": 14,
+				"climbpark": 4,
+				"nome_cpark": "Bric del Frate",
+				"GoogleLink": "https://goo.gl/maps/KSCHzKTWtDVmAPkMA",
+				"ClimbRoad": "Bric Road",
+				"park_num": "2",
+				"nom_cpark2": "Bric del Frate Park",
+				"x": "008.32697214",
+				"y": "44.20559908"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 15,
+			"geometry": { "type": "Point", "coordinates": [8.3278859548491724, 44.205823510070822] },
+			"properties": {
+				"OBJECTID": 15,
+				"climbpark": 4,
+				"nome_cpark": "Falesia del Gorilla",
+				"GoogleLink": "https://goo.gl/maps/3fN6VrmowgoC8ZgG9",
+				"ClimbRoad": "Bric Road",
+				"park_num": "3",
+				"nom_cpark2": "Falesia del Gorilla Park",
+				"x": "008.32788595",
+				"y": "44.20582351"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 16,
+			"geometry": { "type": "Point", "coordinates": [8.3315830801596444, 44.213915726962298] },
+			"properties": {
+				"OBJECTID": 16,
+				"climbpark": 4,
+				"nome_cpark": "Monte Cucco",
+				"GoogleLink": "https://goo.gl/maps/cUpZyFsv9UPwPnyS6",
+				"ClimbRoad": "Bric Road",
+				"park_num": "4",
+				"nom_cpark2": "Monte Cucco Park",
+				"x": "008.33158308",
+				"y": "44.21391573"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 17,
+			"geometry": { "type": "Point", "coordinates": [8.3535457028528253, 44.205119629586406] },
+			"properties": {
+				"OBJECTID": 17,
+				"climbpark": 5,
+				"nome_cpark": "Ponte Cornei",
+				"GoogleLink": "https://goo.gl/maps/qc8jgSAJyVA2qSXX9",
+				"ClimbRoad": "Boragni Road",
+				"park_num": "3",
+				"nom_cpark2": "Ponte Cornei Park",
+				"x": "008.35354570",
+				"y": "44.20511963"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 18,
+			"geometry": { "type": "Point", "coordinates": [8.351241056420287, 44.187663220934105] },
+			"properties": {
+				"OBJECTID": 18,
+				"climbpark": 5,
+				"nome_cpark": "S. Cipriano",
+				"GoogleLink": "https://goo.gl/maps/5dUWKUFBFndiB49t7",
+				"ClimbRoad": "Boragni Road",
+				"park_num": "1",
+				"nom_cpark2": "S. Cipriano Park",
+				"x": "008.35124106",
+				"y": "44.18766322"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 19,
+			"geometry": { "type": "Point", "coordinates": [8.360345469926564, 44.212507431882862] },
+			"properties": {
+				"OBJECTID": 19,
+				"climbpark": 5,
+				"nome_cpark": "Sotto Rocca",
+				"GoogleLink": "https://goo.gl/maps/YHenGQERCm75Vyit8",
+				"ClimbRoad": "Boragni Road",
+				"park_num": "7",
+				"nom_cpark2": "Sotto Rocca Park",
+				"x": "008.36034547",
+				"y": "44.21250743"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 20,
+			"geometry": { "type": "Point", "coordinates": [8.3568157767166458, 44.212504916055174] },
+			"properties": {
+				"OBJECTID": 20,
+				"climbpark": 5,
+				"nome_cpark": "Rocca degli uccelli",
+				"GoogleLink": "https://goo.gl/maps/26LBUA3hD8KdLTmp8",
+				"ClimbRoad": "Boragni Road",
+				"park_num": "5",
+				"nom_cpark2": "Rocca degli uccelli Park",
+				"x": "008.35681578",
+				"y": "44.21250492"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 21,
+			"geometry": { "type": "Point", "coordinates": [8.3547850313915859, 44.211617040047649] },
+			"properties": {
+				"OBJECTID": 21,
+				"climbpark": 5,
+				"nome_cpark": "Cresta degli Uccelli",
+				"GoogleLink": "https://goo.gl/maps/4pNfhfyouXpSty4p8",
+				"ClimbRoad": "Boragni Road",
+				"park_num": "4",
+				"nom_cpark2": "Cresta degli Uccelli Park",
+				"x": "008.35478503",
+				"y": "44.21161704"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 22,
+			"geometry": { "type": "Point", "coordinates": [8.3651561686680687, 44.194571443847749] },
+			"properties": {
+				"OBJECTID": 22,
+				"climbpark": 5,
+				"nome_cpark": "Rocca di Corno",
+				"GoogleLink": "https://goo.gl/maps/1T5HBSMmKgoe8c6M9",
+				"ClimbRoad": "Boragni Road",
+				"park_num": "2",
+				"nom_cpark2": "Rocca di Corno Park",
+				"x": "008.36515617",
+				"y": "44.19457144"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 23,
+			"geometry": { "type": "Point", "coordinates": [8.3761344838878955, 44.198794918318285] },
+			"properties": {
+				"OBJECTID": 23,
+				"climbpark": 6,
+				"nome_cpark": "Le Manie",
+				"GoogleLink": "https://goo.gl/maps/2HGySjY1EmdQtQm27",
+				"ClimbRoad": "Le Manie Road",
+				"park_num": "1",
+				"nom_cpark2": "Le Manie Park",
+				"x": "008.37613448",
+				"y": "44.19879492"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 24,
+			"geometry": { "type": "Point", "coordinates": [8.4159339718333257, 44.190893406256947] },
+			"properties": {
+				"OBJECTID": 24,
+				"climbpark": 7,
+				"nome_cpark": "Capo Noli 1",
+				"GoogleLink": "https://goo.gl/maps/q59PoubzGa9cn7aHA",
+				"ClimbRoad": "Capo Noli Road",
+				"park_num": "1",
+				"nom_cpark2": "Capo Noli 1 Park",
+				"x": "008.41593397",
+				"y": "44.19089341"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 25,
+			"geometry": { "type": "Point", "coordinates": [8.4249941996011035, 44.196923839013706] },
+			"properties": {
+				"OBJECTID": 25,
+				"climbpark": 7,
+				"nome_cpark": "Capo Noli 2",
+				"GoogleLink": "https://goo.gl/maps/iHpbUcdsckF66M5U7",
+				"ClimbRoad": "Capo Noli Road",
+				"park_num": "2",
+				"nom_cpark2": "Capo Noli 2 Park",
+				"x": "008.42499420",
+				"y": "44.19692384"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 26,
+			"geometry": { "type": "Point", "coordinates": [8.3067678146045747, 44.194880588116128] },
+			"properties": {
+				"OBJECTID": 26,
+				"climbpark": 2,
+				"nome_cpark": "Perti Ovest",
+				"GoogleLink": "https://goo.gl/maps/2CefLK4YWpWSgmZj8",
+				"ClimbRoad": "Perti Road",
+				"park_num": "3",
+				"nom_cpark2": "Perti Ovest Park",
+				"x": "008.30676781",
+				"y": "44.19488059"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 27,
+			"geometry": { "type": "Point", "coordinates": [8.3062115999171535, 44.192935400331521] },
+			"properties": {
+				"OBJECTID": 27,
+				"climbpark": 2,
+				"nome_cpark": "Perti Autostrada",
+				"GoogleLink": "https://goo.gl/maps/KKQKpk2qg6Uw5dyh6",
+				"ClimbRoad": "Perti Road",
+				"park_num": "2",
+				"nom_cpark2": "Perti Autostrada Park",
+				"x": "008.30621160",
+				"y": "44.19293540"
+			}
+		}
+	]
+}

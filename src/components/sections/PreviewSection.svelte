@@ -11,8 +11,11 @@
 		hand.
 	</p>
 	<img src={previewImage} alt="preview of the map" class="mx-auto mb-4" />
-	<button
-		class="rounded-lg cursor-pointer py-3 px-8 bg-sky-blue max-w-full text-white transition ease-in-out hover:-translate-y-1 hover:shadow-xl"
-		>Download Preview</button
-	>
+
+	<a href="./assets/PACLIMB_A4MAP.pdf" download>
+		<button
+			class="rounded-lg cursor-pointer py-3 px-8 bg-sky-blue max-w-full text-white transition ease-in-out hover:-translate-y-1 hover:shadow-xl"
+			>Download Preview</button
+		>
+	</a>
 </div>

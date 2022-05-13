@@ -15,7 +15,7 @@
 	import Dashboard from './Dashboard.svelte';
 
 	// Stores
-	import { falesie } from '../stores';
+	import { falesie, parkings, sectors } from '../stores';
 
 	// JS utils and functions
 	import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
@@ -143,8 +143,33 @@
 			// Handle queries with different capitalization
 			// than the source data by calling toLowerCase().
 			if (feature.properties.falesia.toLowerCase().includes(query.toLowerCase())) {
-				feature['place_name'] = `🏔 ${feature.properties.falesia}`;
+				feature['place_name'] = `🧗‍♀️ ${feature.properties.falesia}`;
 				feature['center'] = [feature.properties.falesia_x, feature.properties.falesia_y];
+				feature['place_type'] = ['crag'];
+				matchingFeatures.push(feature);
+			}
+		}
+
+		for (const feature of $parkings) {
+			if (
+				feature.properties['nome_cpark'].toLowerCase().includes(query.toLowerCase()) ||
+				query.toLowerCase().includes('park')
+			) {
+				feature['place_name'] = `🚘 ${feature.properties['nome_cpark']}`;
+				feature['center'] = [feature.properties.x, feature.properties.y];
+				feature['place_type'] = ['parking'];
+				matchingFeatures.push(feature);
+			}
+		}
+
+		for (const feature of $sectors) {
+			if (
+				feature.properties.Settore.toLowerCase().includes(query.toLowerCase()) ||
+				query.toLowerCase().includes('sector')
+			) {
+				feature['place_name'] = `⛰ ${feature.properties.Settore}`;
+				feature['center'] = [feature.properties.x, feature.properties.y];
+				feature['feature'] = ['mountain'];
 				matchingFeatures.push(feature);
 			}
 		}
@@ -165,7 +190,7 @@
 
 		// Introducing controls
 		navigationControl = new mapbox.NavigationControl();
-		fullScreenControl = new mapbox.FullscreenControl();
+		// fullScreenControl = new mapbox.FullscreenControl();
 		geolocateControl = new mapbox.GeolocateControl({
 			positionOptions: {
 				enableHighAccuracy: true
@@ -190,12 +215,12 @@
 
 		// Adding event on click for popups
 		addEventFalesie(map);
-		addEventParking(map);
 
 		// Change layer cursor when hover
 		addCursorToLayers(map, 'falesieetichetta5');
 		addCursorToLayers(map, 'castel_finalborgo');
 		addCursorToLayers(map, 'park');
+		addCursorToLayers(map, 'park_etichette');
 		addCursorToLayers(map, 'settoribiglabel');
 
 		// Add animation to fly to location when clicked on layer
@@ -204,6 +229,7 @@
 		// Add popups to layers
 		addPopupOnClick(map, 'castel_finalborgo');
 		addPopupOnClick(map, 'park');
+		addPopupOnClick(map, 'park_etichette');
 	};
 
 	const addControls = () => {
@@ -212,7 +238,7 @@
 			map.addControl(geolocateControl);
 
 			// Add the control to the map.
-			map.addControl(fullScreenControl);
+			// map.addControl(fullScreenControl);
 			map.addControl(navigationControl);
 
 			geocoderContainer.appendChild(geocoder.onAdd(map));
@@ -223,7 +249,7 @@
 		if (geolocateControl && fullScreenControl && navigationControl && geocoder) {
 			// Remove controls
 			map.removeControl(geolocateControl);
-			map.removeControl(fullScreenControl);
+			// map.removeControl(fullScreenControl);
 			map.removeControl(navigationControl);
 			map.removeControl(geocoder);
 		}

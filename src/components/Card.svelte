@@ -7,7 +7,8 @@
 		faSun,
 		faCar,
 		faBook,
-		faClipboardList
+		faClipboardList,
+		faRoute
 	} from '@fortawesome/free-solid-svg-icons/index.es';
 
 	import CardLink from './CardLink.svelte';
@@ -157,13 +158,13 @@
 			<div class="flex gap-4 items-center">
 				<Dot road={park1_road} x={park1_x} y={park1_y} on:flyToPark />
 				<p class="flex-1 font-light">{parking}</p>
-				<CardLink link={parkingLink} text="to get there" />
+				<CardLink link={parkingLink} text="to get there" icon={faRoute} />
 			</div>
 			{#if parking2}
 				<div class="flex gap-4 items-center">
 					<Dot road={park2_road} x={park2_x} y={park2_y} on:flyToPark />
 					<p class="flex-1 font-light">{parking2}</p>
-					<CardLink link={parkingLink2} text="to get there" />
+					<CardLink link={parkingLink2} text="to get there" icon={faRoute} />
 				</div>
 			{/if}
 		</div>
@@ -196,16 +197,24 @@
 		<CardLink link={wallLink} text="Google it!" />
 	</div>
 
-	<div class="p-4 border rounded-lg border-black/40 flex flex-col gap-4" id="sunlight">
+	<div
+		class="p-4 border rounded-lg border-black/40 flex flex-col gap-4"
+		id="sunlight"
+		on:click={() => {
+			small = false;
+			medium = false;
+			large = true;
+		}}
+	>
 		<div class="flex gap-2 items-center">
 			<Fa icon={faSun} />
 			<h5>Sunlight on the wall</h5>
 		</div>
 		<div class="flex flex-col gap-4" id="suntime-interval">
-			<Sunlight period={summer} title={'Summer'} />
 			<Sunlight period={fall} title={'Autumn'} />
 			<Sunlight period={winter} title={'Winter'} />
 			<Sunlight period={spring} title={'Spring'} />
+			<Sunlight period={summer} title={'Summer'} />
 		</div>
 	</div>
 </div>

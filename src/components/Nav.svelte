@@ -2,6 +2,10 @@
 	// Import components
 	import FeedbackSection from './sections/FeedbackSection.svelte';
 
+	// Import static
+	let logoMobile = './images/icons/logo-mobile.svg';
+	let logoDesktop = './images/icons/logo-scritta.svg';
+
 	// Font Awesome
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
@@ -11,6 +15,8 @@
 		faUsers,
 		faCommentDots
 	} from '@fortawesome/free-solid-svg-icons/index.es';
+
+	let navIconsSize = 'sm';
 </script>
 
 <header class="w-full bg-light-blue z-10">
@@ -18,17 +24,24 @@
 		<!-- Upper Navbar -->
 
 		<div class="flex justify-between items-center w-full">
-			<h2 class="m-0"><a href="/">Logo</a></h2>
-			<div class="flex items-center gap-4">
+			<div>
+				<a href="/">
+					<span class="flex gap-2 items-center">
+						<img src={logoMobile} alt="paclimb logo" class="h-16 my-2" />
+						<img src={logoDesktop} alt="paclimb logo scritta" class="h-16" />
+					</span>
+				</a>
+			</div>
+			<!-- <div class="md:flex items-center gap-4 hidden">
 				<button>Italiano</button>
 				<span> | </span>
 				<button class="active">English</button>
 				<Fa icon={faFlag} />
-			</div>
+			</div> -->
 		</div>
 		<!-- End Upper Navbar -->
 		<!-- Lower Navbar -->
-		<div class="w-full border-t-4 border-black/40">
+		<div class="w-full md:border-t-4 border-t border-black/40">
 			<ul
 				class="flex md:max-w-3xl w-full gap-4 justify-between mx-auto text-2xl md:text-base min-h-[3rem]"
 			>
@@ -36,35 +49,35 @@
 					href="/#how-to"
 					class="opacity-60 hover:opacity-100 transition-opacity flex gap-2 items-center"
 				>
-					<Fa icon={faBook} />
+					<Fa icon={faBook} size={navIconsSize} />
 					<li class="hidden md:block">How to use the MAP</li>
 				</a>
 				<a
 					href="/#print-preview"
 					class="opacity-60 hover:opacity-100 transition-opacity flex gap-2 items-center"
 				>
-					<Fa icon={faMapLocation} />
+					<Fa icon={faMapLocation} size={navIconsSize} />
 					<li class="hidden md:block">Print a preview</li>
 				</a>
 				<a
 					href="/#team"
 					class="opacity-60 hover:opacity-100 transition-opacity flex gap-2 items-center"
 				>
-					<Fa icon={faUsers} />
+					<Fa icon={faUsers} size={navIconsSize} />
 					<li class="hidden md:block">Team</li>
 				</a>
 				<a
 					href="/#contacts"
 					class="opacity-60 hover:opacity-100 transition-opacity flex gap-2 items-center"
 				>
-					<Fa icon={faCommentDots} />
+					<Fa icon={faCommentDots} size={navIconsSize} />
 					<li class="hidden md:block">Contacts</li>
 				</a>
 				<a
 					href="/feedback"
 					class="opacity-60 hover:opacity-100 transition-opacity flex gap-2 items-center relative group"
 				>
-					<Fa icon={faCommentDots} />
+					<Fa icon={faCommentDots} size={navIconsSize} />
 					<li class="hidden md:block">Feedback</li>
 					<span class="flex h-3 w-3">
 						<span

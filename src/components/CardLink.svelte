@@ -1,12 +1,20 @@
 <script>
+	// Font Awesome
+	import Fa from 'svelte-fa/src/fa.svelte';
+
 	export let link;
 	export let text;
+	export let icon = false;
 </script>
 
 <a
 	href={link}
 	target="_blank"
 	rel="noopener noreferrer"
-	class="py-1 px-2 text-sm border border-black/40 rounded shadow-lg hover:bg-sky-blue hover:-translate-y-1 hover:text-white cursor-pointer"
-	>{text}</a
+	class="py-1 px-2 text-sm border border-black/40 flex gap-2 items-center rounded shadow-lg hover:bg-sky-blue hover:-translate-y-1 hover:text-white cursor-pointer"
+>
+	{#if icon}
+		<Fa {icon} />
+	{/if}
+	{text}</a
 >
