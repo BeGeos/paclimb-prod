@@ -66,13 +66,13 @@
 					<Fa icon={faUsers} size={navIconsSize} />
 					<li class="hidden md:block">Team</li>
 				</a>
-				<a
+				<!-- <a
 					href="/#contacts"
 					class="opacity-60 hover:opacity-100 transition-opacity flex gap-2 items-center"
 				>
 					<Fa icon={faCommentDots} size={navIconsSize} />
 					<li class="hidden md:block">Contacts</li>
-				</a>
+				</a> -->
 				<a
 					href="/feedback"
 					class="opacity-60 hover:opacity-100 transition-opacity flex gap-2 items-center relative group"
