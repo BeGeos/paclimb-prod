@@ -1,5 +1,5 @@
 <div
-	class="text-sm md:w-96 md:text-base w-80 text-center bg-white rounded-lg p-8 absolute top-10 -left-[18rem] md:-left-40 z-10 scale-0 group group-hover:scale-100 transition-transform origin-top shadow-lg"
+	class="text-sm md:w-96 md:text-base w-80 text-center bg-white rounded-lg p-8 absolute top-10 -left-[18rem] md:-left-40 z-10 scale-0 group group-hover:md:scale-100 transition-transform origin-top shadow-lg"
 >
 	<h2>Let us know what you think</h2>
 	<p>
