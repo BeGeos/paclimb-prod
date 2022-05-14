@@ -15,7 +15,7 @@
 	/>
 	<meta property="og:url" content="/" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" itemprop="image" content="/images/preview-link.png" />
+	<meta property="og:image" itemprop="image" content="./images/preview-link.png" />
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KME9KDHHJB"></script>
 	<script>

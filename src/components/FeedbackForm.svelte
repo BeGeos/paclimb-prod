@@ -1,5 +1,5 @@
 <script>
-	let formActionEmail = import.meta.env.VITE_FORM_ACTION_EMAIL;
+	let formActionEmail = 'https://www.actionforms.io/e/r/paclim-3d-map';
 </script>
 
 <form action={formActionEmail} method="POST" class="flex flex-col gap-6 my-16">
@@ -8,7 +8,7 @@
 		<label for="question-1" class="font-bold">Which feature did you find most useful?</label>
 
 		<select name="question-1" class="border border-black/40 rounded-md p-2">
-			<option value="parkings">-----</option>
+			<option value="none">-----</option>
 			<option value="parkings">Parkings</option>
 			<option value="sunlight">Hours of sunlight</option>
 			<option value="google-it">Google it</option>
@@ -21,6 +21,7 @@
 		>
 
 		<select name="question-2" class="border border-black/40 rounded-md p-2">
+			<option value="none">------</option>
 			<option value="yes">Yes</option>
 			<option value="no">No</option>
 		</select>
@@ -41,6 +42,7 @@
 			>Were you able to find crags you didn't know about?</label
 		>
 		<select name="question-4" class="border border-black/40 rounded-md p-2">
+			<option value="none">-----</option>
 			<option value="yes">Yes</option>
 			<option value="no">No</option>
 		</select>
