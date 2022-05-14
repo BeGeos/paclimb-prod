@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import Nav from '../components/Nav.svelte';
+	// Force deployment
 </script>
 
 <svelte:head>

@@ -1,4 +1,8 @@
-<form class="flex flex-col gap-6 my-16">
+<form
+	action="https://www.actionforms.io/e/r/paclim-3d-map"
+	method="POST"
+	class="flex flex-col gap-6 my-16"
+>
 	<h3>Feedback Form - PAClimb</h3>
 	<div class="form-row">
 		<label for="question-1" class="font-bold">Which feature did you find most useful?</label>
