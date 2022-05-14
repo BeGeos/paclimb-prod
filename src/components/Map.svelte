@@ -43,7 +43,7 @@
 	let container;
 	let map;
 	let navigationControl;
-	let fullScreenControl;
+	// let fullScreenControl;
 	let geolocateControl;
 	let geocoder;
 	let dataWalls;
@@ -246,7 +246,7 @@
 	};
 
 	const removeControls = () => {
-		if (geolocateControl && fullScreenControl && navigationControl && geocoder) {
+		if (geolocateControl && navigationControl && geocoder) {
 			// Remove controls
 			map.removeControl(geolocateControl);
 			// map.removeControl(fullScreenControl);

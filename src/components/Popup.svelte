@@ -55,7 +55,7 @@
 			transform: translateY(100%);
 		}
 		to {
-			transform: translateY(0%);
+			tranform: translateY(0%);
 		}
 	}
 </style>
