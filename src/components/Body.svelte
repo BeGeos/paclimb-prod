@@ -4,7 +4,6 @@
 	import Section from './Section.svelte';
 	import HowToSection from './sections/howToSection.svelte';
 	import PreviewSection from './sections/PreviewSection.svelte';
-	// import Loading from './Loading.svelte';
 	import Footer from './Footer.svelte';
 
 	let visible = false;
@@ -16,8 +15,6 @@
 
 	// openFeedbackModal();
 </script>
-
-<!-- <Loading {loading} /> -->
 
 <Map
 	lat={44.178981}

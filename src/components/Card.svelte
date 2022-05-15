@@ -104,7 +104,7 @@
 		active = false;
 	}
 
-	$: console.log(data);
+	// $: console.log(data);
 
 	onMount(() => {
 		slider.addEventListener(

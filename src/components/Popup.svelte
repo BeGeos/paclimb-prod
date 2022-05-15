@@ -11,12 +11,10 @@
 	export let featureName;
 	export let featureLink;
 	export let show;
-	export let x;
-	export let y;
 </script>
 
 <div
-	class={`fixed bg-white bottom-0 left-0 min-w-full max-h-fit translate-y-full z-40 p-2 rounded-md scale-0 pr-6 font-Voltaire lg:min-w-fit lg:bottom-[${y}] lg:left-[${x}]`}
+	class="fixed bg-white bottom-0 left-0 min-w-full max-h-fit translate-y-full z-40 p-2 rounded-md scale-0 pr-6 font-Voltaire lg:min-w-fit"
 	class:show
 >
 	<span
@@ -55,7 +53,7 @@
 			transform: translateY(100%);
 		}
 		to {
-			tranform: translateY(0%);
+			transform: translateY(0%);
 		}
 	}
 </style>

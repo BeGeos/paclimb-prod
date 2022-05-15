@@ -23,14 +23,4 @@ const addFlytTo = (map, layer) => {
 	});
 };
 
-const composeHTML = (id, feature) => {
-	if (id === 'park') {
-		let road = feature.properties.ClimbRoad;
-		let parkName = feature.properties.nome_cpark;
-		let parkLink = feature.properties.GoogleLink;
-	}
-
-	return;
-};
-
 export { mapbox, MapboxGeocoder, addCursorToLayers, addFlytTo };

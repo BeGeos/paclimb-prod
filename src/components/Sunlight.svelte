@@ -36,7 +36,6 @@
 		periodRatio = getPartOfDay(periodStart, periodEnd);
 		periodStartPosition = getStartPosition(periodStart);
 		periodEndPosition = getEndPosition(periodEnd);
-		// DEBUG console.log(period, periodStart, periodEnd, periodRatio);
 	}
 </script>
 
