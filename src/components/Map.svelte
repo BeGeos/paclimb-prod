@@ -9,7 +9,6 @@
 	import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/index.es';
 
 	// Components
-	// import SearchBar from './SearchBar.svelte';
 	import Card from './Card.svelte';
 	import Popup from './Popup.svelte';
 	import Dashboard from './Dashboard.svelte';

@@ -7,13 +7,10 @@
 	import Footer from './Footer.svelte';
 
 	let visible = false;
-	// let loading = true;
 
 	const handleOpenMap = () => {
 		visible = !visible;
 	};
-
-	// openFeedbackModal();
 </script>
 
 <Map
