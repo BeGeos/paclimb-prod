@@ -1,5 +1,5 @@
 <script>
-	import { roadColors } from '../stores';
+	import { roadColors } from '@stores';
 
 	// Font Awesome
 	import Fa from 'svelte-fa/src/fa.svelte';

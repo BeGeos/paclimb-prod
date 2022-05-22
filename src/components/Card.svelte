@@ -11,9 +11,9 @@
 		faRoute
 	} from '@fortawesome/free-solid-svg-icons/index.es';
 
-	import CardLink from './CardLink.svelte';
-	import Dot from './icons/Dot.svelte';
-	import Sunlight from './Sunlight.svelte';
+	import CardLink from '@components/CardLink.svelte';
+	import Dot from '@components/Dot.svelte';
+	import Sunlight from '@components/Sunlight.svelte';
 
 	export let data;
 
@@ -37,8 +37,8 @@
 	let summer;
 	let spring;
 	let winter;
-
 	let slider;
+
 	let small = true;
 	let medium = false;
 	let large = false;
@@ -76,30 +76,32 @@
 	$: if (data) {
 		active = true;
 
+		const props = data.properties;
+
 		// Wall and guide details
-		wall = data.properties.falesia;
-		sector = data.properties.Settore != '-' ? data.properties.Settore : wall;
-		wallLink = data.properties.link_wall;
-		A51 = data.properties.A51_wall != '-' ? data.properties.A51_wall : null;
-		pgVersante = data.properties.VSud_wall != '-' ? data.properties.VSud_wall : null;
+		wall = props.falesia;
+		sector = props.Settore != '-' ? props.Settore : wall;
+		wallLink = props.link_wall;
+		A51 = props.A51_wall != '-' ? props.A51_wall : null;
+		pgVersante = props.VSud_wall != '-' ? props.VSud_wall : null;
 
 		// Parking details
-		parking = data.properties.park1;
-		parkingLink = data.properties.park1_lk;
-		park1_road = data.properties.park1_road;
-		park1_x = parseFloat(data.properties.park1_x);
-		park1_y = parseFloat(data.properties.park1_y);
-		parking2 = data.properties.park2 != '-' ? data.properties.park2 : null;
-		parkingLink2 = data.properties.park2_lk ? data.properties.park2_lk : null;
-		park2_road = data.properties.park2_road;
-		park2_x = parseFloat(data.properties.park2_x);
-		park2_y = parseFloat(data.properties.park2_y);
+		parking = props.park1;
+		parkingLink = props.park1_lk;
+		park1_road = props.park1_road;
+		park1_x = parseFloat(props.park1_x);
+		park1_y = parseFloat(props.park1_y);
+		parking2 = props.park2 != '-' ? props.park2 : null;
+		parkingLink2 = props.park2_lk ? props.park2_lk : null;
+		park2_road = props.park2_road;
+		park2_x = parseFloat(props.park2_x);
+		park2_y = parseFloat(props.park2_y);
 
 		// Exposure details
-		fall = data.properties.fall;
-		spring = data.properties.spring;
-		summer = data.properties.summr;
-		winter = data.properties.winter;
+		fall = props.fall;
+		spring = props.spring;
+		summer = props.summr;
+		winter = props.winter;
 	} else {
 		active = false;
 	}
@@ -329,24 +331,6 @@
 		}
 		to {
 			transform: translateY(0%);
-		}
-	}
-
-	@keyframes sizeMiddleUp {
-		from {
-			max-height: 30%;
-		}
-		to {
-			max-height: fit-content;
-		}
-	}
-
-	@keyframes sizeLargeUp {
-		from {
-			max-height: fit-content;
-		}
-		to {
-			max-height: 100%;
 		}
 	}
 </style>

@@ -35,6 +35,7 @@ const loadColors = () => {
 	});
 };
 
+// Routines
 loadFalesie();
 loadParkings();
 loadSectors();

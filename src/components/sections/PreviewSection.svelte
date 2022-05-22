@@ -1,5 +1,6 @@
 <script>
-	import Backdrop from '../Backdrop.svelte';
+	import Backdrop from '@components/Backdrop.svelte';
+
 	let previewImage = './images/mapPreview.png';
 </script>
 
