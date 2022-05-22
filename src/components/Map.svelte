@@ -4,21 +4,23 @@
 	import { onDestroy, onMount } from 'svelte';
 	// export let mapImage = '../../static/images/backgroundMap.png';
 
+	let dispatch = createEventDispatcher();
+
 	// Font Awesome
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/index.es';
 
 	// Components
-	import Card from './Card.svelte';
-	import Popup from './Popup.svelte';
-	import Dashboard from './Dashboard.svelte';
+	import Card from '@components/Card.svelte';
+	import Popup from '@components/Popup.svelte';
+	import Dashboard from '@components/Dashboard.svelte';
 
 	// Stores
-	import { falesie, parkings, sectors } from '../stores';
+	import { falesie, parkings, sectors } from '@stores';
 
 	// JS utils and functions
 	import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-	import { mapbox, MapboxGeocoder, addCursorToLayers, addFlytTo } from '../utils/mapbox.js';
+	import { mapbox, MapboxGeocoder, addCursorToLayers, addFlytTo } from '@utils/mapbox.js';
 
 	// Global variables
 	let BASE_STYLE_URL = import.meta.env.VITE_MAPBOX_BASE_STYLE_URL;
@@ -34,15 +36,9 @@
 	export let visible;
 
 	// Internal variables
-	let style = `${BASE_STYLE_URL}/${SATELLITE_ID}`;
-	let outdoor = false;
-	let satellite = true;
-	let show = false;
-	// let interval;
 	let container;
 	let map;
 	let navigationControl;
-	// let fullScreenControl;
 	let geolocateControl;
 	let geocoder;
 	let dataWalls;
@@ -53,17 +49,16 @@
 	let x;
 	let y;
 
-	let dispatch = createEventDispatcher();
+	let style = `${BASE_STYLE_URL}/${SATELLITE_ID}`;
+	let outdoor = false;
+	let satellite = true;
+	let show = false;
 
 	const returnHome = () => {
 		dataWalls = null;
 		closePopup();
 		dispatch('returnHome');
 	};
-
-	// const loaded = () => {
-	// 	dispatch('loaded');
-	// };
 
 	const closePopup = () => {
 		show = false;

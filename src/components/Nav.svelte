@@ -1,6 +1,6 @@
 <script>
 	// Import components
-	import FeedbackSection from './sections/FeedbackSection.svelte';
+	import FeedbackSection from '@components/sections/FeedbackSection.svelte';
 
 	// Import static
 	let logoMobile = './images/icons/logo-mobile.svg';

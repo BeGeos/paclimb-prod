@@ -1,6 +1,6 @@
 <script>
-	import FeedbackForm from './FeedbackForm.svelte';
-	import Footer from './Footer.svelte';
+	import FeedbackForm from '@components/FeedbackForm.svelte';
+	import Footer from '@components/Footer.svelte';
 	let illustration = './images/reviews_illustration.svg';
 </script>
 

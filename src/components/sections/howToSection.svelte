@@ -1,5 +1,5 @@
 <script>
-	import Backdrop from '../Backdrop.svelte';
+	import Backdrop from '@components/Backdrop.svelte';
 </script>
 
 <Backdrop backdropColor="#CFE4E7" opacity={0.8} />

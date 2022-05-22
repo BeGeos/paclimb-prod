@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import { roadColors } from '../../stores';
+	import { roadColors } from '../stores';
 
 	const dispatch = createEventDispatcher();
 

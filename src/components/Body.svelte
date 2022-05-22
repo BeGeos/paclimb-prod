@@ -1,10 +1,10 @@
 <script>
-	import Hero from '../components/Hero.svelte';
-	import Map from '../components/Map.svelte';
-	import Section from './Section.svelte';
-	import HowToSection from './sections/howToSection.svelte';
-	import PreviewSection from './sections/PreviewSection.svelte';
-	import Footer from './Footer.svelte';
+	import Footer from '@components/Footer.svelte';
+	import Hero from '@components/Hero.svelte';
+	import HowToSection from '@components/sections/howToSection.svelte';
+	import Map from '@components/Map.svelte';
+	import PreviewSection from '@components/sections/PreviewSection.svelte';
+	import Section from '@components/Section.svelte';
 
 	let visible = false;
 

@@ -1,9 +1,10 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import WelcomeCard from '../components/WelcomeCard.svelte';
-	export let visible;
+	import WelcomeCard from '@components/WelcomeCard.svelte';
 
 	const dispatch = createEventDispatcher();
+
+	export let visible;
 
 	const openMap = () => {
 		dispatch('openMap');
