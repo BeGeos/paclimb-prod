@@ -127,7 +127,7 @@
 <svelte:window bind:innerHeight={windowHeight} />
 
 <div
-	class="fixed max-h-full bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 lg:overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[20%] lg:text-base card-container"
+	class="fixed max-h-full bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overscroll-contain lg:overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[20%] lg:text-base card-container "
 	class:active
 	class:small
 	class:medium
