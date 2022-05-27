@@ -13,7 +13,7 @@
 		Here you can look for and explore all the crags in Finale Ligure. This area is very disorienting
 		but once inside the map you will have an overall point of view.
 	</p>
-	<h1 class="md:text-5xl text-3xl font-bold cursor-pointer" on:click={handleOpen}>
+	<h1 class="md:text-5xl text-3xl font-bold cursor-pointer underline" on:click={handleOpen}>
 		Explore the 3D Map!
 	</h1>
 </div>

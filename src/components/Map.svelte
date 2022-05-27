@@ -8,12 +8,13 @@
 
 	// Font Awesome
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/index.es';
+	import { faArrowLeft, faFilter } from '@fortawesome/free-solid-svg-icons/index.es';
 
 	// Components
 	import Card from '@components/Card.svelte';
 	import Popup from '@components/Popup.svelte';
 	import Dashboard from '@components/Dashboard.svelte';
+	import Filters from '@components/Filters.svelte';
 
 	// Stores
 	import { falesie, parkings, sectors } from '@stores';
@@ -46,13 +47,14 @@
 	let roadName;
 	let featureName;
 	let featureLink;
-	let x;
-	let y;
 
+	let x = 0;
+	let y = 0;
 	let style = `${BASE_STYLE_URL}/${SATELLITE_ID}`;
 	let outdoor = false;
 	let satellite = true;
 	let show = false;
+	let filterActive = false;
 
 	const returnHome = () => {
 		dataWalls = null;
@@ -284,9 +286,12 @@
 	class="fixed inset-0 max-h-screen z-10 max-w-[100vw] bg-white -z-20"
 	class:isForeground={visible}
 >
-	<!-- <img src={mapImage} alt="background-map" class="min-w-full object-cover" /> -->
 	<Dashboard {visible}>
-		<!-- <SearchBar /> -->
+		<div class="absolute top-[10px] left-[10px]">
+			<button class="p-2 rounded-md bg-white shadow-lg" on:click={() => (filterActive = true)}>
+				<Fa icon={faFilter} />
+			</button>
+		</div>
 		<div class="absolute bottom-10 left-5" class:light={satellite} class:dark={outdoor}>
 			<button class="py-2 px-4" class:active={satellite} on:click={() => changeStyle('satellite')}
 				>Satellite</button
@@ -323,6 +328,7 @@
 	}}
 />
 <Popup {roadName} {featureName} {featureLink} {show} {x} {y} handleClose={closePopup} />
+<Filters active={filterActive} on:closeFilters={() => (filterActive = false)} />
 
 <style>
 	.active {
