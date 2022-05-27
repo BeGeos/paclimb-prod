@@ -38,40 +38,14 @@
 	let spring;
 	let winter;
 	let slider;
-
+	let height;
+	let windowRatio;
+	let windowHeight = 0;
 	let small = true;
 	let medium = false;
 	let large = false;
 	let touchstartY = 0;
 	let touchendY = 0;
-
-	// Utils functions
-	const handleSwipe = () => {
-		// Swipe up
-		if (touchendY < touchstartY) {
-			if (small) {
-				small = false;
-				medium = true;
-				large = false;
-			} else if (medium) {
-				small = false;
-				medium = false;
-				large = true;
-			} else return;
-		}
-
-		// Swipe down
-		if (touchendY > touchstartY) {
-			if (large) {
-				large = false;
-				medium = true;
-				small = false;
-			} else if (medium) {
-				medium = false;
-				small = true;
-			} else return;
-		}
-	};
 
 	$: if (data) {
 		active = true;
@@ -109,35 +83,59 @@
 	// $: console.log(data);
 
 	onMount(() => {
-		slider.addEventListener(
-			'touchstart',
-			(e) => {
-				touchstartY = e.changedTouches[0].screenY;
-			},
-			false
-		);
+		slider.addEventListener('touchmove', (e) => {
+			let positionY = e.changedTouches[0].clientY;
+			let localHeight = windowHeight - positionY;
+			windowRatio = localHeight / windowHeight;
 
-		slider.addEventListener(
-			'touchend',
-			(e) => {
-				touchendY = e.changedTouches[0].screenY;
-				handleSwipe();
-			},
-			false
-		);
+			if (windowRatio >= 0.75) {
+				// 75%
+				height = `${1 * windowHeight}px`;
+				small = false;
+				medium = false;
+				large = true;
+			} else if (windowRatio >= 0.35 && windowRatio < 0.75) {
+				// Between 35 and 75%
+				height = `${0.6 * windowHeight}px`;
+				small = false;
+				medium = true;
+				large = false;
+			} else {
+				height = '';
+				small = true;
+				medium = false;
+				large = false;
+			}
+
+			height = `${localHeight}px`;
+		});
+
+		slider.addEventListener('touchend', () => {
+			if (windowRatio >= 0.75) {
+				// 75%
+				height = `${1 * windowHeight}px`;
+			} else if (windowRatio >= 0.35 && windowRatio < 0.75) {
+				// Between 35 and 65%
+				height = `${0.6 * windowHeight}px`;
+			} else {
+				height = '';
+			}
+		});
 	});
 </script>
 
+<svelte:window bind:innerHeight={windowHeight} />
+
 <div
-	class="fixed bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[20%] lg:text-base card-container"
+	class="fixed max-h-full bottom-0 left-0 text-sm bg-white rounded-lg rounded-b-none shadow-xl flex flex-col gap-4 p-6 z-40 scale-0 lg:overflow-y-auto translate-y-full lg:rounded-b-lg lg:left-[10%] lg:bottom-[20%] lg:text-base card-container"
 	class:active
 	class:small
 	class:medium
 	class:large
+	style:height
 	id="card"
-	bind:this={slider}
 >
-	<div class="fixed top-0 left-0 min-w-full h-8 lg:hidden" id="slider" />
+	<div class="fixed top-0 left-0 min-w-full h-8 lg:hidden" id="slider" bind:this={slider} />
 	<div class="flex justify-between items-center">
 		<h3 class="uppercase font-Voltaire">{sector}</h3>
 		<span
@@ -147,6 +145,7 @@
 				small = true;
 				medium = false;
 				large = false;
+				height = '';
 			}}>&times;</span
 		>
 	</div>
@@ -237,6 +236,7 @@
 
 	.card-container {
 		width: 100%;
+		min-height: 25%;
 	}
 
 	/* Responsive Card Styles */
@@ -255,34 +255,30 @@
 	}
 
 	.small {
-		max-height: fit-content;
-	}
-
-	.medium,
-	.large {
-		max-height: 100%;
+		height: 25%;
 	}
 
 	.small #guides,
 	.small #routes,
 	.small #sunlight {
 		opacity: 0;
-		transform: scale(0);
+		transition: opacity 0.25s ease-in-out;
+	}
+
+	#suntime-interval {
 		display: none;
 	}
 
 	.medium #guides,
 	.medium #parking,
-	.medium #routes {
+	.medium #routes,
+	.medium #sunlight {
 		opacity: 1;
-		transform: scale(1);
+		transition: opacity 0.25s ease-in-out;
 	}
 
-	.medium #sunlight {
-		display: flex;
-	}
-	.medium #suntime-interval {
-		display: none;
+	.large {
+		overflow-y: auto;
 	}
 
 	.large #suntime-interval {
@@ -301,6 +297,8 @@
 		.small,
 		.medium,
 		.large {
+			min-height: 20rem;
+			height: auto;
 			max-height: 38rem;
 		}
 
