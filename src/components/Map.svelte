@@ -283,7 +283,7 @@
 </script>
 
 <div
-	class="fixed inset-0 max-h-screen z-10 max-w-[100vw] bg-white -z-20"
+	class="fixed inset-0 max-h-screen max-w-[100vw] bg-white -z-20 overflow-hidden overscroll-contain"
 	class:isForeground={visible}
 >
 	<Dashboard {visible}>

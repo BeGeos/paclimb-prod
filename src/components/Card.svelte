@@ -88,15 +88,13 @@
 			let localHeight = windowHeight - positionY;
 			windowRatio = localHeight / windowHeight;
 
-			if (windowRatio >= 0.75) {
+			if (windowRatio >= 0.65) {
 				// 75%
-				height = `${1 * windowHeight}px`;
 				small = false;
 				medium = false;
 				large = true;
-			} else if (windowRatio >= 0.35 && windowRatio < 0.75) {
-				// Between 35 and 75%
-				height = `${0.6 * windowHeight}px`;
+			} else if (windowRatio >= 0.4 && windowRatio < 0.65) {
+				// Between 40 and 65%
 				small = false;
 				medium = true;
 				large = false;
@@ -111,11 +109,11 @@
 		});
 
 		slider.addEventListener('touchend', () => {
-			if (windowRatio >= 0.75) {
-				// 75%
+			if (windowRatio >= 0.65) {
+				// 65%
 				height = `${1 * windowHeight}px`;
-			} else if (windowRatio >= 0.35 && windowRatio < 0.75) {
-				// Between 35 and 65%
+			} else if (windowRatio >= 0.4 && windowRatio < 0.65) {
+				// Between 40 and 65%
 				height = `${0.6 * windowHeight}px`;
 			} else {
 				height = '';
@@ -212,10 +210,10 @@
 			<h5>Sunlight on the wall</h5>
 		</div>
 		<div class="flex flex-col gap-4" id="suntime-interval">
-			<Sunlight period={fall} title={'Autumn'} />
-			<Sunlight period={winter} title={'Winter'} />
-			<Sunlight period={spring} title={'Spring'} />
-			<Sunlight period={summer} title={'Summer'} />
+			<Sunlight period={fall} title="Autumn" />
+			<Sunlight period={winter} title="Winter" />
+			<Sunlight period={spring} title="Spring" />
+			<Sunlight period={summer} title="Summer" />
 		</div>
 	</div>
 </div>
