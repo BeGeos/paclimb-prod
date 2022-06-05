@@ -22,17 +22,21 @@
 
 	const handleClose = (e, toResults = false) => {
 		dispatch('closeFilters');
+		if (toResults) {
+			return (appear = true);
+		}
+		return (appear = false);
 	};
 
 	export let active;
 
 	let filterForm;
 	let sunlight;
-	let appear = false;
 
 	let exposureStar = './exposureStar.svg';
 	let allSun = false;
 	let allShadow = false;
+	let appear = false;
 
 	let submitCounter = 0;
 
@@ -67,8 +71,10 @@
 			transition:fly={{ x: 500, duration: 200 }}
 		>
 			<FilterResults
-				on:closeFilterResults={() => (appear = !appear)}
-				on:viewMap={(e) => handleClose(e, true)}
+				on:closeFilterResults={() => (appear = false)}
+				on:viewMap={(e) => {
+					handleClose(e, true);
+				}}
 			/>
 		</div>
 	{/if}

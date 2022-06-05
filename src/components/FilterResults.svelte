@@ -16,11 +16,8 @@
 	};
 </script>
 
-<div
-	class="max-w-full text-2xl lg:text-base flex justify-between items-center"
-	on:click={handleCloseResults}
->
-	<div class="cursor-pointer">
+<div class="max-w-full text-2xl lg:text-base flex justify-between items-center">
+	<div class="cursor-pointer" on:click={handleCloseResults}>
 		<Fa icon={faArrowRight} />
 	</div>
 	<p
