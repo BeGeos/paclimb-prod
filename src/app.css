@@ -15,6 +15,9 @@ html {
 
 :root {
 	--clr-primary: #4c8bf5;
+	--clr-light-blue: #cfe4e7;
+	--clr-sun-yellow: #ebee67;
+	--clr-dark-blue: #153651;
 
 	--icon-left-arrow: url('../static/images/icons/arrow-left-solid.svg');
 }
