@@ -10,19 +10,19 @@
 			href="https://www.linkedin.com/in/lorenzo-griso-4010171a5/"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="block">Lorenzo Griso - Project Creator</a
+			class="block underline">Lorenzo Griso - Project Creator</a
 		>
 		<a
 			href="https://www.linkedin.com/in/marco-montepeloso-dev/"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="block">Marco Montepeloso - Web Developer</a
+			class="block underline">Marco Montepeloso - Software Developer</a
 		>
 		<a
 			href="https://www.linkedin.com/in/gianluca-sala-323361225/"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="block">Gianluca Sala - GIS Analyst</a
+			class="block underline">Gianluca Sala - GIS Analyst</a
 		>
 	</div>
 </div>

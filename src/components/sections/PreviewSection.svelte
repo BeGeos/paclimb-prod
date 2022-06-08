@@ -1,7 +1,7 @@
 <script>
 	import Backdrop from '@components/Backdrop.svelte';
 
-	let previewImage = './images/mapPreview.png';
+	let previewImage = './images/preview-map-to-download.png';
 </script>
 
 <Backdrop backdropColor="#CFE4E7" opacity={0.8} />
@@ -11,7 +11,7 @@
 		With the QR code in your <strong>guides book</strong> you will have the interactive map always at
 		hand.
 	</p>
-	<img src={previewImage} alt="preview of the map" class="mx-auto mb-4" />
+	<img src={previewImage} alt="preview of the map" class="mx-auto mb-4 border-8 border-white" />
 
 	<a href="./assets/PACLIMB_A4MAP.pdf" download>
 		<button
