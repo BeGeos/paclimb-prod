@@ -213,7 +213,7 @@
 
 		geocoder = new MapboxGeocoder({
 			accessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
-			placeholder: 'Search...',
+			placeholder: 'Search the crags...',
 			localGeocoder: forwardGeocoder,
 			bbox: [8.2836296, 44.1547898, 8.4371453, 44.2277226],
 			zoom: 15,
