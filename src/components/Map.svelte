@@ -132,6 +132,20 @@
 		});
 	};
 
+	const flyFromResults = (map, x, y) => {
+		map.setBearing(0);
+		map.flyTo({
+			center: [x, y],
+			speed: 1,
+			curve: 1,
+			zoom: 16
+		});
+
+		if (window.innerWidth < 1024) {
+			filterActive = false;
+		}
+	};
+
 	// TODO
 	const forwardGeocoder = (query) => {
 		const matchingFeatures = [];
@@ -328,7 +342,11 @@
 	}}
 />
 <Popup {roadName} {featureName} {featureLink} {show} {x} {y} handleClose={closePopup} />
-<Filters active={filterActive} on:closeFilters={() => (filterActive = false)} />
+<Filters
+	active={filterActive}
+	on:closeFilters={() => (filterActive = false)}
+	on:flyFromResults={(e) => flyFromResults(map, e.detail.x, e.detail.y)}
+/>
 
 <style>
 	.active {

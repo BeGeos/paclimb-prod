@@ -54,8 +54,8 @@
 
 	export const resetSlider = (e) => {
 		setTimeout(() => {
-			setLowerValue(9);
-			setUpperValue(14);
+			setLowerValue(7);
+			setUpperValue(19);
 
 			upperValue = upperSlider.value;
 			lowerValue = lowerSlider.value;
@@ -84,7 +84,7 @@
 			min="0"
 			max={sliderMaxValue}
 			step="1"
-			value="9"
+			value="7"
 			name="lower-suntime"
 			class="absolute min-w-full top-0 h-4 mx-auto appearance-none bg-transparent pointer-events-none"
 			disabled={!enabled}
@@ -97,7 +97,7 @@
 			min="0"
 			max={sliderMaxValue}
 			step="1"
-			value="14"
+			value="19"
 			name="upper-suntime"
 			class="absolute min-w-full top-0 h-4 mx-auto appearance-none bg-transparent pointer-events-none"
 			disabled={!enabled}
