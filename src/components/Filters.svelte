@@ -1,4 +1,7 @@
 <script>
+	// External libraries
+	import { isEqual } from 'lodash';
+
 	// Font awesome
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faArrowLeft, faSun, faMoon } from '@fortawesome/free-solid-svg-icons/index.es';
@@ -16,7 +19,10 @@
 	import FilterResults from '@components/FilterResults.svelte';
 
 	// Utils
-	import { formatFilterFormData } from '@utils';
+	import { formatFilterFormData, digestFormData } from '@utils';
+
+	// Stores
+	import { falesie } from '@stores';
 
 	const dispatch = createEventDispatcher();
 
@@ -37,6 +43,8 @@
 	let allSun = false;
 	let allShadow = false;
 	let appear = false;
+	let filterHistory = {};
+	let filteredData = {};
 
 	let submitCounter = 0;
 
@@ -44,12 +52,18 @@
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('submit');
+
 		submitCounter++;
 
 		let formData = new FormData(filterForm);
-		let data = formatFilterFormData(formData);
-		// console.log(data);
+		let filters = formatFilterFormData(formData);
+
+		// If the filters are identical to the one saved in store --> return
+		let isSameFilter = isEqual(filters, filterHistory);
+		if (!isSameFilter) {
+			filterHistory = filters;
+			filteredData = digestFormData($falesie, filters);
+		}
 		appear = true;
 	};
 
@@ -71,6 +85,8 @@
 			transition:fly={{ x: 500, duration: 200 }}
 		>
 			<FilterResults
+				results={filteredData}
+				on:flyFromResults
 				on:closeFilterResults={() => (appear = false)}
 				on:viewMap={(e) => {
 					handleClose(e, true);
