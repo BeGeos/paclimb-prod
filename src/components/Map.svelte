@@ -8,12 +8,15 @@
 
 	// Font Awesome
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/index.es';
+	import { faArrowLeft, faFilter, faCloudSun } from '@fortawesome/free-solid-svg-icons/index.es';
 
 	// Components
 	import Card from '@components/Card.svelte';
 	import Popup from '@components/Popup.svelte';
 	import Dashboard from '@components/Dashboard.svelte';
+	import Filters from '@components/Filters.svelte';
+	import WeatherCard from '@components/WeatherCard.svelte';
+	import Windy from '@components/WindyEmbeds.svelte';
 
 	// Stores
 	import { falesie, parkings, sectors } from '@stores';
@@ -21,6 +24,10 @@
 	// JS utils and functions
 	import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 	import { mapbox, MapboxGeocoder, addCursorToLayers, addFlytTo } from '@utils/mapbox.js';
+	import { convertAzimuthFromTextToInt } from '@utils';
+
+	// Import bounding boxes - for now just Finale Ligure
+	import { FINALE_LIGURE_BBOX, FINALE_LIGURE_MAX_BOUNDS } from '@utils/mapbox.js';
 
 	// Global variables
 	let BASE_STYLE_URL = import.meta.env.VITE_MAPBOX_BASE_STYLE_URL;
@@ -46,17 +53,25 @@
 	let roadName;
 	let featureName;
 	let featureLink;
-	let x;
-	let y;
+	let windyParam;
+	let windowWidth;
 
+	let x = 0;
+	let y = 0;
 	let style = `${BASE_STYLE_URL}/${SATELLITE_ID}`;
 	let outdoor = false;
 	let satellite = true;
 	let show = false;
+	let cardVisible = false;
+	let filterActive = false;
+	let weatherActive = false;
+	let openWindy = false;
+	let defaultBearing = -19.18;
 
 	const returnHome = () => {
-		dataWalls = null;
+		closeWallCard();
 		closePopup();
+
 		dispatch('returnHome');
 	};
 
@@ -64,19 +79,28 @@
 		show = false;
 	};
 
+	const openPopup = () => {
+		show = true;
+	};
+
+	const closeWallCard = () => {
+		cardVisible = false;
+	};
+
+	const openWallCard = () => {
+		cardVisible = true;
+	};
+
 	const addEventFalesie = (map) => {
 		map.on('click', 'falesieetichetta5', (e) => {
 			dataWalls = e.features[0];
 			let wallX = parseFloat(dataWalls.properties.falesia_x);
-			let wallY = parseFloat(dataWalls.properties.falesia_y) - 0.004;
-			show = false;
-			flyToWall(map, wallX, wallY);
-		});
-	};
+			let wallY = parseFloat(dataWalls.properties.falesia_y);
+			let azimuth = dataWalls.properties.azimut;
 
-	const addEventParking = (map) => {
-		map.on('click', 'park', (e) => {
-			return;
+			closePopup();
+			openWallCard();
+			flyToWallBestView(map, wallX, wallY, azimuth);
 		});
 	};
 
@@ -92,45 +116,58 @@
 				: feature.properties.Googl;
 			x = e.point.x;
 			y = e.point.y;
-			show = true;
-		});
-	};
-
-	const closeCardWhenDrag = (map) => {
-		map.on('mousedown', (e) => {
-			dataWalls = null;
+			closeWallCard();
+			openPopup();
 		});
 	};
 
 	const addClosePopup = (map) => {
-		map.on('mousedown', (e) => {
-			if (show) {
-				show = false;
-			}
-		});
-
-		map.on('touchstart', (e) => {
-			if (show) {
-				show = false;
-			}
+		container.addEventListener('pointerdown', (e) => {
+			if (show) return (show = false);
 		});
 	};
 
 	const flyToPark = (map, x, y) => {
-		map.setBearing(0);
 		map.flyTo({
-			center: [x, y]
+			center: [x, y],
+			bearing: 0,
+			speed: 0.35,
+			curve: 1
 		});
 	};
 
-	const flyToWall = (map, x, y) => {
-		map.setBearing(0);
+	const flyToWallBestView = (map, x, y, azimuth) => {
+		let localAzimuth = convertAzimuthFromTextToInt(azimuth.toLowerCase());
+		let localBearing;
+
+		if (!azimuth || localAzimuth == undefined) {
+			localBearing = defaultBearing;
+		} else {
+			localBearing = localAzimuth + 180 > 360 ? localAzimuth - 180 : localAzimuth + 180;
+		}
 		map.flyTo({
-			center: [x, y]
+			center: [x, y],
+			bearing: localBearing,
+			speed: 0.35,
+			curve: 1,
+			zoom: 16
 		});
+
+		if (window.innerWidth < 1024) {
+			filterActive = false;
+		}
 	};
 
-	// TODO
+	const handleMapboxSearch = (e) => {
+		const { properties, place_type } = e.result;
+
+		if (place_type.includes('crag')) {
+			dataWalls = { properties };
+			cardVisible = true;
+		}
+		return;
+	};
+
 	const forwardGeocoder = (query) => {
 		const matchingFeatures = [];
 		for (const feature of $falesie) {
@@ -171,7 +208,7 @@
 	};
 
 	// Map logic
-	const createMap = () => {
+	const createMap = async () => {
 		// Add map
 		map = new mapbox.Map({
 			container,
@@ -197,14 +234,19 @@
 
 		geocoder = new MapboxGeocoder({
 			accessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
-			placeholder: 'Search...',
+			placeholder: 'Search the crags...',
 			localGeocoder: forwardGeocoder,
-			bbox: [8.2836296, 44.1547898, 8.4371453, 44.2277226],
+			bbox: FINALE_LIGURE_BBOX,
 			zoom: 15,
 			mapboxgl: mapbox
 		});
 
-		closeCardWhenDrag(map);
+		geocoder.on('result', handleMapboxSearch);
+
+		// Set max boundries for zoom in/out of map
+		map.setMaxBounds(FINALE_LIGURE_MAX_BOUNDS);
+
+		// closeCardWhenDrag(map);
 		addClosePopup(map);
 
 		// Adding event on click for popups
@@ -229,11 +271,10 @@
 	const addControls = () => {
 		// Add geolocate control on map
 		if (map) {
-			map.addControl(geolocateControl);
-
 			// Add the control to the map.
 			// map.addControl(fullScreenControl);
 			map.addControl(navigationControl);
+			map.addControl(geolocateControl);
 
 			geocoderContainer.appendChild(geocoder.onAdd(map));
 		}
@@ -253,13 +294,21 @@
 		outdoor = !outdoor;
 		satellite = !satellite;
 		if (option === 'satellite') {
-			map.setStyle(`${BASE_STYLE_URL}/${SATELLITE_ID}`);
+			return map.setStyle(`${BASE_STYLE_URL}/${SATELLITE_ID}`);
 		}
 
 		if (option === 'outdoor') {
-			map.setStyle(`${BASE_STYLE_URL}/${OUTDOOR_ID}`);
+			return map.setStyle(`${BASE_STYLE_URL}/${OUTDOOR_ID}`);
 		}
-		return;
+	};
+
+	const handleWeatherDetails = (e) => {
+		windyParam = e.detail.param;
+		openWindy = true;
+	};
+
+	const handleCloseWindy = () => {
+		openWindy = false;
 	};
 
 	onMount(() => {
@@ -280,13 +329,43 @@
 	}
 </script>
 
+<svelte:window bind:outerWidth={windowWidth} />
+
 <div
-	class="fixed inset-0 max-h-screen z-10 max-w-[100vw] bg-white -z-20"
+	class="fixed inset-0 max-h-screen max-w-[100vw] bg-white -z-20 overflow-hidden overscroll-contain"
 	class:isForeground={visible}
 >
-	<!-- <img src={mapImage} alt="background-map" class="min-w-full object-cover" /> -->
 	<Dashboard {visible}>
-		<!-- <SearchBar /> -->
+		<div class="absolute top-[10px] left-[10px] flex flex-col gap-4">
+			<button
+				class="p-2 rounded-md bg-white shadow-lg flex items-center justify-center"
+				on:click={() => {
+					if (windowWidth <= 1024) {
+						// The card closes only on mobile when opening filters/weather
+						cardVisible = false;
+					}
+					closePopup();
+					weatherActive = false;
+					filterActive = true;
+				}}
+			>
+				<Fa icon={faFilter} />
+			</button>
+			<button
+				class="p-2 rounded-md bg-white shadow-lg flex items-center justify-center"
+				on:click={() => {
+					if (windowWidth <= 1024) {
+						// The card closes only on mobile when opening filters/weather
+						cardVisible = false;
+					}
+					closePopup();
+					filterActive = false;
+					weatherActive = true;
+				}}
+			>
+				<Fa icon={faCloudSun} />
+			</button>
+		</div>
 		<div class="absolute bottom-10 left-5" class:light={satellite} class:dark={outdoor}>
 			<button class="py-2 px-4" class:active={satellite} on:click={() => changeStyle('satellite')}
 				>Satellite</button
@@ -301,6 +380,26 @@
 				<span class="hidden md:block">Return Home</span>
 			</button>
 		</div>
+		<Filters
+			active={filterActive}
+			on:closeFilters={() => (filterActive = false)}
+			on:flyFromResults={(e) => {
+				dataWalls = e.detail.self;
+				flyToWallBestView(map, e.detail.x, e.detail.y, e.detail.azimuth);
+				cardVisible = true;
+			}}
+		/>
+		<WeatherCard
+			active={weatherActive}
+			location="Finale Ligure"
+			{lat}
+			{lon}
+			on:closeWeather={() => (weatherActive = false)}
+			on:openWeatherDetail={handleWeatherDetails}
+		/>
+		{#if openWindy}
+			<Windy {lat} {lon} detail={windyParam} on:closeWindy={handleCloseWindy} />
+		{/if}
 	</Dashboard>
 	<div bind:this={container} class="absolute inset-0 -z-10">
 		{#if map}
@@ -314,14 +413,17 @@
 	</div>
 </div>
 
-<Card
-	data={dataWalls}
-	on:flyToPark={(e) => {
-		let x = e.detail.x;
-		let y = e.detail.y;
-		flyToPark(map, x, y);
-	}}
-/>
+{#if cardVisible}
+	<Card
+		data={dataWalls}
+		on:flyToPark={(e) => {
+			let x = e.detail.x;
+			let y = e.detail.y;
+			flyToPark(map, x, y);
+		}}
+		on:closeCard={closeWallCard}
+	/>
+{/if}
 <Popup {roadName} {featureName} {featureLink} {show} {x} {y} handleClose={closePopup} />
 
 <style>

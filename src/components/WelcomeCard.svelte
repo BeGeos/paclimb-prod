@@ -10,10 +10,10 @@
 >
 	<h4 class="text-xl mb-2 font-bold">Hi Climbers!</h4>
 	<p class="mb-6 font-normal">
-		Here you can look for and explore all the crags in Finale Ligure. This area is very disorienting
-		but once inside the map you will have an overall point of view.
+		Here you can <span class="font-bold">look</span> for and <span class="font-bold">explore</span> all
+		the crags in Finale Ligure. With the geolocation will be very easy to reach the crags.
 	</p>
-	<h1 class="md:text-5xl text-3xl font-bold cursor-pointer" on:click={handleOpen}>
+	<h1 class="md:text-5xl text-3xl font-bold cursor-pointer underline" on:click={handleOpen}>
 		Explore the 3D Map!
 	</h1>
 </div>

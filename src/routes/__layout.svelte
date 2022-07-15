@@ -1,6 +1,18 @@
+<script context="module">
+	export const load = async () => {
+		return {
+			props: {
+				env: import.meta.env.VITE_ENVIRONMENT
+			}
+		};
+	};
+</script>
+
 <script>
 	import '../app.css';
 	import Nav from '@components/Nav.svelte';
+
+	export let env;
 </script>
 
 <svelte:head>
@@ -16,17 +28,20 @@
 	<meta property="og:url" content="/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" itemprop="image" content="./images/blue-preview-link.png" />
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KME9KDHHJB"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
 
-		gtag('config', 'G-KME9KDHHJB');
-	</script>
+	{#if env === 'prod'}
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-KME9KDHHJB"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'G-KME9KDHHJB');
+		</script>
+	{/if}
 </svelte:head>
 
 <Nav />
