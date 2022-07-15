@@ -8,9 +8,9 @@ export const prodLogger = () => {
 		level: 'info',
 		format: combine(timestamp(), formatLogger),
 		transports: [
-			new transports.Console(),
-			new transports.File({ level: 'error', filename: 'logs/error.log', format: json() }),
-			new transports.File({ level: 'info', filename: 'logs/combined.log', format: json() })
+			new transports.Console()
+			// new transports.File({ level: 'error', filename: 'logs/error.log', format: json() }),
+			// new transports.File({ level: 'info', filename: 'logs/combined.log', format: json() })
 		]
 	});
 };
