@@ -67,7 +67,7 @@
 		{/if}
 	</p>
 	{#if threshold && danger}
-		<Tooltip {dangerText} />
+		<Tooltip text={dangerText} />
 	{/if}
 </div>
 
