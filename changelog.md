@@ -1,3 +1,14 @@
+## v0.2.1
+
+### Changes
+
+- Minor changes to filters legend/subtext
+
+### Bug fixes
+
+- Tooltip not showing correct text
+- Changed bounding box for map
+
 ## v0.2.0
 
 ### Features
@@ -10,6 +21,6 @@
 - New information in the card: Exposure and crag coordinates in UTM format
 - Set bearing to have the clicked crag right ahead
 
-## Bug fixes
+### Bug fixes
 
 - Fixed card animation and show/hide when map is closed
