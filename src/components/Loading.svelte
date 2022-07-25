@@ -1,5 +1,6 @@
-<script>
-	export let loading;
+<script lang="ts">
+	export let loading: boolean;
+	// TODO remove this component since it is not in use
 </script>
 
 {#if loading}

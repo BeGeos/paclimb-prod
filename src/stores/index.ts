@@ -1,29 +1,32 @@
 import { writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
+
+import type { WallsData, ParkingsData, SectorsData } from '@types';
 
 // Import falesie
 import { features as walls } from './files/falesie.json';
 import { features as _parkings } from './files/parking.json';
 import { features as _sectors } from './files/sector.json';
 
-export const falesie = writable([]);
-export const parkings = writable([]);
-export const sectors = writable([]);
+export const falesie: Writable<WallsData[]> = writable([]);
+export const parkings: Writable<ParkingsData[]> = writable([]);
+export const sectors: Writable<SectorsData[]> = writable([]);
 
-export const roadColors = writable({});
+export const roadColors: Writable<{ [key: string]: string }> = writable({});
 
-const loadFalesie = () => {
+const loadFalesie = async () => {
 	falesie.set(walls);
 };
 
-const loadParkings = () => {
+const loadParkings = async () => {
 	parkings.set(_parkings);
 };
 
-const loadSectors = () => {
+const loadSectors = async () => {
 	sectors.set(_sectors);
 };
 
-const loadColors = () => {
+const loadColors = async () => {
 	roadColors.set({
 		'verezzi road': '#eaf344',
 		'perti road': '#38a800',
