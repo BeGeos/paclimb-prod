@@ -1,3 +1,10 @@
+## v0.3.0
+
+### Changes
+
+- Converted to TypeScript
+- Support for types
+
 ## v0.2.1
 
 ### Changes
