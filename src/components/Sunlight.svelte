@@ -1,16 +1,16 @@
-<script>
+<script lang="ts">
 	// Import utils
 	import { parseTimeInterval, getPartOfDay, getStartPosition, getEndPosition } from '@utils';
 
-	export let period = null;
-	export let title = '';
-	export let fake = false;
+	export let period: string | null = null;
+	export let title: string = '';
+	export let fake: boolean = false;
 
-	let periodStart;
-	let periodEnd;
-	let periodRatio;
-	let periodStartPosition;
-	let periodEndPosition;
+	let periodStart: number;
+	let periodEnd: number;
+	let periodRatio: number;
+	let periodStartPosition: number;
+	let periodEndPosition: number;
 
 	$: if (period) {
 		[periodStart, periodEnd] = parseTimeInterval(period);
@@ -30,7 +30,7 @@
 		</div>
 	{:else}
 		<div class="h-3.5 flex-1 bg-deep-brown relative">
-			{#if periodStart}
+			{#if periodStart >= 0}
 				<span class="font-light absolute -top-[140%]" style:left={`${periodStartPosition - 2}%`}
 					>{periodStart}</span
 				>

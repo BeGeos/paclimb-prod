@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	// External libraries
 	import { isEqual } from 'lodash';
 
@@ -6,8 +6,11 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faArrowLeft, faSun, faMoon } from '@fortawesome/free-solid-svg-icons/index.es';
 
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, SvelteComponent } from 'svelte';
 	import { fly } from 'svelte/transition';
+
+	// Types
+	import type { WallFilterResults } from '@types';
 
 	// Import components
 	import AreaFilter from '@components/AreaFilter.svelte';
@@ -26,7 +29,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	const handleClose = (e, toResults = false) => {
+	const handleClose = (e: MouseEvent | CustomEvent, toResults: boolean = false) => {
 		dispatch('closeFilters');
 		if (toResults) {
 			return (appear = true);
@@ -34,23 +37,23 @@
 		return (appear = false);
 	};
 
-	export let active;
+	export let active: boolean;
 
-	let filterForm;
-	let sunlight;
+	let filterForm: HTMLFormElement;
+	let sunlight: SvelteComponent;
 
-	let exposureStar = './exposureStar.svg';
-	let allSun = false;
-	let allShadow = false;
-	let appear = false;
-	let filterHistory = {};
-	let filteredData = {};
+	let exposureStar: string = './exposureStar.svg';
+	let allSun: boolean = false;
+	let allShadow: boolean = false;
+	let appear: boolean = false;
+	let filterHistory: object = {};
+	let filteredData: { [key: string]: Array<{} | WallFilterResults> } = {};
 
-	let submitCounter = 0;
+	let submitCounter: number = 0;
 
 	$: enabled = !allSun && !allShadow;
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: SubmitEvent) => {
 		e.preventDefault();
 
 		submitCounter++;
@@ -67,10 +70,10 @@
 		appear = true;
 	};
 
-	const handleFormReset = (e) => {
+	const handleFormReset = () => {
 		allSun = false;
 		allShadow = false;
-		sunlight.resetSlider(e);
+		sunlight.resetSlider();
 		submitCounter = 0;
 	};
 </script>

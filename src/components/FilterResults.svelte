@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
 	// Font awesome
@@ -8,7 +8,10 @@
 	// Utils
 	import { titleCase } from '@utils';
 
-	export let results;
+	// Types
+	import type { WallFilterResults } from '@types';
+
+	export let results: { [key: string]: Array<WallFilterResults> } | {};
 
 	const dispatch = createEventDispatcher();
 
@@ -20,7 +23,13 @@
 		dispatch('viewMap');
 	};
 
-	const handleFlyFromResults = (e, x, y, self, azimuth) => {
+	const handleFlyFromResults = (
+		e: MouseEvent,
+		x: string | number,
+		y: string | number,
+		self: object,
+		azimuth: string
+	) => {
 		dispatch('flyFromResults', {
 			x,
 			y,
